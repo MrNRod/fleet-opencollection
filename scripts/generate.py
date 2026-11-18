@@ -8,6 +8,7 @@ import os
 import re
 import sys
 import tempfile
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -15,7 +16,8 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-DOC_PATH = 'docs/REST API/rest-api.md'
+# Fleet moved the doc from 'docs/REST API/' to 'docs/API/' in 4.95.0; try newest first.
+DOC_PATHS = ('docs/API/rest-api.md', 'docs/REST API/rest-api.md')
 DOC_URL = 'https://fleetdm.com/docs/rest-api/rest-api'
 METHOD = r'GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS'
 ROUTE = re.compile(r'^`(' + METHOD + r')\s+(/[^`\s]+)`\s*$', re.M)
@@ -493,6 +495,15 @@ def fetch(url, github_api=False):
         return response.read().decode('utf-8')
 
 
+def fetch_doc(tag):
+    for index, path in enumerate(DOC_PATHS):
+        try:
+            return fetch('https://raw.githubusercontent.com/fleetdm/fleet/' + tag + '/' + urllib.parse.quote(path))
+        except urllib.error.HTTPError as error:
+            if error.code != 404 or index == len(DOC_PATHS) - 1:
+                raise
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     source = parser.add_mutually_exclusive_group()
@@ -515,7 +526,7 @@ def main():
         if not re.fullmatch(r'fleet-v\d+\.\d+\.\d+(?:[-.][A-Za-z0-9.-]+)?', tag):
             parser.error('Expected a Fleet release tag such as fleet-v4.92.3')
         version = tag.removeprefix('fleet-v')
-        text = fetch('https://raw.githubusercontent.com/fleetdm/fleet/' + tag + '/' + urllib.parse.quote(DOC_PATH))
+        text = fetch_doc(tag)
     else:
         if not args.version:
             parser.error('--version is required with --input')
