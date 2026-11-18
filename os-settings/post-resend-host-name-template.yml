@@ -1,7 +1,7 @@
 info:
   name: Resend host name template
   type: http
-  seq: 17
+  seq: 21
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/name_template/resend'

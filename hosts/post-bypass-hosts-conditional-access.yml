@@ -1,7 +1,7 @@
 info:
   name: Bypass host's conditional access
   type: http
-  seq: 40
+  seq: 43
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/device/:token/bypass_conditional_access'

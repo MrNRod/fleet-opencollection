@@ -6,39 +6,34 @@ http:
   method: GET
   url: '{{baseUrl}}/api/v1/fleet/setup_experience/eula/metadata'
   auth: inherit
-docs: |-
-  _Available in Fleet Premium_
-
-  Get information about the EULA file that was uploaded to Fleet. If no EULA was previously uploaded, this endpoint returns a `404` status code.
-
-  `GET /api/v1/fleet/setup_experience/eula/metadata`
-
-  #### Example
-
-  `GET /api/v1/fleet/setup_experience/eula/metadata`
-
-  ##### Default response
-
-  `Status: 200`
-
-  ```json
-  {
-    "name": "eula.pdf",
-    "token": "AA598E2A-7952-46E3-B89D-526D45F7E233",
-    "created_at": "2023-04-20T13:02:05Z"
-  }
-  ```
-
-  In the response above:
-
-  - `token` is the value you can use to [download an EULA](#download-an-eula-file)
-
-  Reference: https://fleetdm.com/docs/rest-api/rest-api#get-eula-metadata
+  params:
+  - name: platform
+    value: ''
+    type: query
+    disabled: true
+    description: The platform of the EULA. Options are `darwin` and `windows`. Defaults to `darwin`. Returns 422
+      if the value is not `darwin` or `windows`.
+docs: "_Available in Fleet Premium_\n \nGet information about the EULA file that was uploaded to Fleet. If no EULA\
+  \ was previously uploaded, this endpoint returns a `404` status code.\n\n`GET /api/v1/fleet/setup_experience/eula/metadata`\n\
+  \n#### Parameters\n\n| Name     | Type   | In    | Description                                       |\n| --------\
+  \ | ------ | ----- | ------------------------------------------------- |\n| platform | string | query | The platform\
+  \ of the EULA. Options are `darwin` and `windows`. Defaults to `darwin`. Returns 422 if the value is not `darwin`\
+  \ or `windows`. |\n\n#### Example\n\n`GET /api/v1/fleet/setup_experience/eula/metadata`\n\n##### Default response\n\
+  \n`Status: 200`\n\n```json\n{\n  \"name\": \"eula.pdf\",\n  \"token\": \"AA598E2A-7952-46E3-B89D-526D45F7E233\"\
+  ,\n  \"created_at\": \"2023-04-20T13:02:05Z\",\n  \"platform\": \"darwin\"\n}\n```\n\nIn the response above:\n\
+  \n- `token` is the value you can use to [download an EULA](#download-an-eula-file)\n\nReference: https://fleetdm.com/docs/rest-api/rest-api#get-eula-metadata"
 examples:
 - name: 200 Default response
   request:
     method: GET
     url: '{{baseUrl}}/api/v1/fleet/setup_experience/eula/metadata'
+    params:
+    - name: platform
+      value: ''
+      type: query
+      disabled: true
+      description: The platform of the EULA. Options are `darwin` and `windows`. Defaults to `darwin`. Returns 422
+        if the value is not `darwin` or `windows`.
   response:
     status: 200
     statusText: OK
@@ -48,7 +43,8 @@ examples:
         {
           "name": "eula.pdf",
           "token": "AA598E2A-7952-46E3-B89D-526D45F7E233",
-          "created_at": "2023-04-20T13:02:05Z"
+          "created_at": "2023-04-20T13:02:05Z",
+          "platform": "darwin"
         }
     headers:
     - name: Content-Type

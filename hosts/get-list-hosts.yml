@@ -78,6 +78,18 @@ http:
     type: query
     disabled: true
     description: The ID of the software title to filter hosts by.
+  - name: software_installer_id
+    value: ''
+    type: query
+    disabled: true
+    description: '**Requires `software_title_id`**. The ID of a specific package of the title to filter hosts by.
+      Use for multi-package titles to filter by one installer.'
+  - name: app_store_app_version_id
+    value: ''
+    type: query
+    disabled: true
+    description: '**Requires `software_title_id`**. The ID of a specific admin-created App Store app version of
+      the title to filter hosts by. iOS, iPadOS, and Android only.'
   - name: software_status
     value: ''
     type: query
@@ -129,8 +141,8 @@ http:
     type: query
     disabled: true
     description: The _mobile device management_ (MDM) enrollment status to filter hosts by. Valid options are 'manual',
-      'manual-personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending' only includes Apple (macOS,
-      iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet.
+      'manual-personal', 'personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending' only includes
+      Apple (macOS, iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet.
   - name: connected_to_fleet
     value: ''
     type: query
@@ -274,6 +286,8 @@ docs: |-
   | policy_response         | string  | query | **Requires `policy_id`**. Valid options are 'passing' or 'failing'.                                                                                                                                                                                                                                       |
   | software_version_id     | integer | query | The ID of the software version to filter hosts by.                                                                                                                                                                                                                                                                                                  |
   | software_title_id       | integer | query | The ID of the software title to filter hosts by.                                                                                                                                                                                                                                                                                                  |
+  | software_installer_id | integer | query | **Requires `software_title_id`**. The ID of a specific package of the title to filter hosts by. Use for multi-package titles to filter by one installer. |
+  | app_store_app_version_id | integer | query | **Requires `software_title_id`**. The ID of a specific admin-created App Store app version of the title to filter hosts by. iOS, iPadOS, and Android only. |
   | software_status       | string | query | The status of the software install to filter hosts by. One of: `pending_install`, `failed_install`, `installed`, `pending_uninstall`, `failed_uninstall`, `pending`, or `failed`. Mutually exclusive with `software_version_id`, and must be supplied if `software_title_id` is set.   |
   | os_version_id | integer | query | The ID of the operating system version to filter hosts by. |
   | os_name                 | string  | query | The name of the operating system to filter hosts by. `os_version` must also be specified with `os_name`. See note below for filtering Windows hosts.                                                                                                                                                                                                                                     |
@@ -282,7 +296,7 @@ docs: |-
   | device_mapping          | boolean | query | Indicates whether `device_mapping` should be included for each host. |
   | mdm_id                  | integer | query | The ID of the _mobile device management_ (MDM) solution to filter hosts by (that is, filter hosts that use a specific MDM provider and URL).                                                                                                                                                                                                |
   | mdm_name                | string  | query | The name of the _mobile device management_ (MDM) solution to filter hosts by (that is, filter hosts that use a specific MDM provider).                                                                                                                                                                                                |
-  | mdm_enrollment_status   | string  | query | The _mobile device management_ (MDM) enrollment status to filter hosts by. Valid options are 'manual', 'manual-personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending' only includes Apple (macOS, iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet. |
+  | mdm_enrollment_status   | string  | query | The _mobile device management_ (MDM) enrollment status to filter hosts by. Valid options are 'manual', 'manual-personal', 'personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending' only includes Apple (macOS, iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet. |
   | connected_to_fleet   | boolean  | query | Filter hosts that are talking to this Fleet server for MDM features. In rare cases, hosts can be enrolled to one Fleet server but talk to a different Fleet server for MDM features. In this case, the value would be `false`. Always `false` for Linux hosts.                                                                                                                           |
   | macos_settings          | string  | query | Filters the hosts by the status of the _mobile device management_ (MDM) profiles applied to hosts. Valid options are 'verified', 'verifying', 'pending', or 'failed'. **Note: If this filter is used in Fleet Premium without a fleet ID filter, the results include only "Unassigned" hosts.**                                                                                                                                                                                                             |
   | munki_issue_id          | integer | query | The ID of the _munki issue_ (a Munki-reported error or warning message) to filter hosts by (that is, filter hosts that are affected by that corresponding error or warning message).                                                                                                                                                        |
@@ -455,6 +469,7 @@ docs: |-
             "name": "glibc",
             "version": "2.12",
             "source": "rpm_packages",
+            "ai_tool": false,
             "generated_cpe": "cpe:2.3:a:gnu:glibc:2.12:*:*:*:*:*:*:*",
             "last_opened_at": "2021-08-18T21:14:00Z",
             "vulnerabilities": [
@@ -668,6 +683,18 @@ examples:
       type: query
       disabled: true
       description: The ID of the software title to filter hosts by.
+    - name: software_installer_id
+      value: ''
+      type: query
+      disabled: true
+      description: '**Requires `software_title_id`**. The ID of a specific package of the title to filter hosts
+        by. Use for multi-package titles to filter by one installer.'
+    - name: app_store_app_version_id
+      value: ''
+      type: query
+      disabled: true
+      description: '**Requires `software_title_id`**. The ID of a specific admin-created App Store app version of
+        the title to filter hosts by. iOS, iPadOS, and Android only.'
     - name: software_status
       value: ''
       type: query
@@ -719,8 +746,8 @@ examples:
       type: query
       disabled: true
       description: The _mobile device management_ (MDM) enrollment status to filter hosts by. Valid options are
-        'manual', 'manual-personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending' only includes
-        Apple (macOS, iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet.
+        'manual', 'manual-personal', 'personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending'
+        only includes Apple (macOS, iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet.
     - name: connected_to_fleet
       value: ''
       type: query
@@ -957,6 +984,7 @@ examples:
                   "name": "glibc",
                   "version": "2.12",
                   "source": "rpm_packages",
+                  "ai_tool": false,
                   "generated_cpe": "cpe:2.3:a:gnu:glibc:2.12:*:*:*:*:*:*:*",
                   "last_opened_at": "2021-08-18T21:14:00Z",
                   "vulnerabilities": [

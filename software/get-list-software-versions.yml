@@ -63,6 +63,28 @@ http:
     disabled: true
     description: '_Available in Fleet Premium_. If `true`, filters to only include software with vulnerabilities
       that have been actively exploited in the wild (`cisa_known_exploit: true`). Default is `false`.'
+  - name: source
+    value: ''
+    type: query
+    disabled: true
+    description: Filters to only include software from the specified sources. For example, `"apps"` for macOS apps
+      or `"programs"` for Windows apps. To filter by multiple sources, separate them with commas (e.g. `?source=apps,programs`).
+      See `source` values in the [software inventory reference](https://fleetdm.com/guides/software-inventory-reference).
+  - name: extension_for
+    value: ''
+    type: query
+    disabled: true
+    description: '**Requires `source`**. Filters browser and IDE extensions to the specified browsers or IDEs. To
+      filter by multiple, separate them with commas. Each value only narrows the source it belongs to. For example,
+      `?source=apps,chrome_extensions,vscode_extensions&extension_for=brave,cursor` returns macOS apps, Brave extensions,
+      and Cursor extensions. If no value belongs to a source, all extensions from that source are included. See
+      `extension_for` values in the [software inventory reference](https://fleetdm.com/guides/software-inventory-reference).'
+  - name: ai_tool
+    value: ''
+    type: query
+    disabled: true
+    description: _Available in Fleet Premium_. If `true`, filters to only include AI tools (e.g. AI apps, npm packages,
+      MCP servers). Default is `false`.
   - name: without_vulnerability_details
     value: ''
     type: query
@@ -99,6 +121,9 @@ docs: |-
   | min_cvss_score | integer | query | _Available in Fleet Premium_. Filters to include only software with vulnerabilities that have a CVSS version 3.x base score higher than the specified value.   |
   | max_cvss_score | integer | query | _Available in Fleet Premium_. Filters to only include software with vulnerabilities that have a CVSS version 3.x base score lower than what's specified.   |
   | exploit | boolean | query | _Available in Fleet Premium_. If `true`, filters to only include software with vulnerabilities that have been actively exploited in the wild (`cisa_known_exploit: true`). Default is `false`.  |
+  | source | string | query | Filters to only include software from the specified sources. For example, `"apps"` for macOS apps or `"programs"` for Windows apps. To filter by multiple sources, separate them with commas (e.g. `?source=apps,programs`). See `source` values in the [software inventory reference](https://fleetdm.com/guides/software-inventory-reference). |
+  | extension_for | string | query | **Requires `source`**. Filters browser and IDE extensions to the specified browsers or IDEs. To filter by multiple, separate them with commas. Each value only narrows the source it belongs to. For example, `?source=apps,chrome_extensions,vscode_extensions&extension_for=brave,cursor` returns macOS apps, Brave extensions, and Cursor extensions. If no value belongs to a source, all extensions from that source are included. See `extension_for` values in the [software inventory reference](https://fleetdm.com/guides/software-inventory-reference). |
+  | ai_tool | boolean | query | _Available in Fleet Premium_. If `true`, filters to only include AI tools (e.g. AI apps, npm packages, MCP servers). Default is `false`. |
   | without_vulnerability_details | boolean | query | _Available in Fleet Premium_. If `true` only vulnerability name is included in response. If `false` (or omitted), adds vulnerability description, CVSS score, and other details available in Fleet Premium. See note above on performance. |
   | after | string | query | The value to get results after. This needs `order_key` defined, as that's the column that would be used. |
 
@@ -122,6 +147,7 @@ docs: |-
           "display_name": "",
           "version": "2.12",
           "source": "rpm_packages",
+          "ai_tool": false,
           "release": "1.212.el6",
           "vendor": "CentOS",
           "arch": "x86_64",
@@ -146,6 +172,7 @@ docs: |-
           "display_name": "",
           "version": "2.10.0",
           "source": "chrome_extensions",
+          "ai_tool": false,
           "browser": "chrome",
           "extension_for": "chrome",
           "extension_id": "aeblfdkhhhdcdjpifhhbdiojplfjncoa",
@@ -158,6 +185,7 @@ docs: |-
           "name": "Prettier",
           "version": "232.1.0",
           "source": "jetbrains_plugins",
+          "ai_tool": false,
           "extension_for": "goland",
           "generated_cpe": "cpe:2.3:a:*:prettier:232.1.0:*:*:*:*:node.js:*:*",
           "hosts_count": 19,
@@ -194,6 +222,8 @@ docs: |-
   ```
 
   `browser` and `extension_for` fields are included when set and when empty. `extension_for` will show the browser or Visual Studio Code fork associated with the extension, allowing for differentiation between e.g. an extension installed on Visual Studio Code and one installed on Cursor. `browser` is deprecated, and only shows this information for browser plugins.
+
+  `ai_tool` is available in Fleet Premium. It's `true` when Fleet identified the software as an AI tool. Learn more in the [software inventory reference](https://fleetdm.com/guides/software-inventory-reference#ai-tools). On Fleet Free, it's omitted.
 
   `release` is included when set. For `rpm_packages`, it's the package release (for example, `1.212.el6`). For `go_binaries`, it's the version of the Go toolchain the binary was built with (for example, `go1.26.1`). Fleet uses it to detect Go standard library vulnerabilities, so the same binary version built with two toolchains is listed as two versions. `generated_cpe` is empty for Go binaries. Their vulnerabilities come from the [Go vulnerability database](https://vuln.go.dev) instead of NVD.
 
@@ -260,6 +290,28 @@ examples:
       disabled: true
       description: '_Available in Fleet Premium_. If `true`, filters to only include software with vulnerabilities
         that have been actively exploited in the wild (`cisa_known_exploit: true`). Default is `false`.'
+    - name: source
+      value: ''
+      type: query
+      disabled: true
+      description: Filters to only include software from the specified sources. For example, `"apps"` for macOS
+        apps or `"programs"` for Windows apps. To filter by multiple sources, separate them with commas (e.g. `?source=apps,programs`).
+        See `source` values in the [software inventory reference](https://fleetdm.com/guides/software-inventory-reference).
+    - name: extension_for
+      value: ''
+      type: query
+      disabled: true
+      description: '**Requires `source`**. Filters browser and IDE extensions to the specified browsers or IDEs.
+        To filter by multiple, separate them with commas. Each value only narrows the source it belongs to. For
+        example, `?source=apps,chrome_extensions,vscode_extensions&extension_for=brave,cursor` returns macOS apps,
+        Brave extensions, and Cursor extensions. If no value belongs to a source, all extensions from that source
+        are included. See `extension_for` values in the [software inventory reference](https://fleetdm.com/guides/software-inventory-reference).'
+    - name: ai_tool
+      value: ''
+      type: query
+      disabled: true
+      description: _Available in Fleet Premium_. If `true`, filters to only include AI tools (e.g. AI apps, npm
+        packages, MCP servers). Default is `false`.
     - name: without_vulnerability_details
       value: ''
       type: query
@@ -289,6 +341,7 @@ examples:
               "display_name": "",
               "version": "2.12",
               "source": "rpm_packages",
+              "ai_tool": false,
               "release": "1.212.el6",
               "vendor": "CentOS",
               "arch": "x86_64",
@@ -313,6 +366,7 @@ examples:
               "display_name": "",
               "version": "2.10.0",
               "source": "chrome_extensions",
+              "ai_tool": false,
               "browser": "chrome",
               "extension_for": "chrome",
               "extension_id": "aeblfdkhhhdcdjpifhhbdiojplfjncoa",
@@ -325,6 +379,7 @@ examples:
               "name": "Prettier",
               "version": "232.1.0",
               "source": "jetbrains_plugins",
+              "ai_tool": false,
               "extension_for": "goland",
               "generated_cpe": "cpe:2.3:a:*:prettier:232.1.0:*:*:*:*:node.js:*:*",
               "hosts_count": 19,

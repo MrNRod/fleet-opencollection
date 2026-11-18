@@ -1,7 +1,7 @@
 info:
   name: Cancel host's upcoming activity
   type: http
-  seq: 35
+  seq: 38
 http:
   method: DELETE
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/activities/upcoming/:activity_id'

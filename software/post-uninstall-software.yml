@@ -1,7 +1,7 @@
 info:
   name: Uninstall software
   type: http
-  seq: 21
+  seq: 22
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/software/:software_title_id/uninstall'

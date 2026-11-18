@@ -1,7 +1,7 @@
 info:
   name: Update app store app
   type: http
-  seq: 14
+  seq: 15
 http:
   method: PATCH
   url: '{{baseUrl}}/api/v1/fleet/software/titles/:title_id/app_store_app'

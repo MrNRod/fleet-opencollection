@@ -1,7 +1,7 @@
 info:
   name: Delete software icon
   type: http
-  seq: 11
+  seq: 12
 http:
   method: DELETE
   url: '{{baseUrl}}/api/v1/fleet/software/titles/:id/icon'

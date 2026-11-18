@@ -1,7 +1,7 @@
 info:
   name: Delete Apple asset declaration
   type: http
-  seq: 11
+  seq: 13
 http:
   method: DELETE
   url: '{{baseUrl}}/api/v1/fleet/assets/:asset_uuid'

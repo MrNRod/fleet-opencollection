@@ -1,7 +1,7 @@
 info:
   name: Update host name template
   type: http
-  seq: 16
+  seq: 20
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/host_name_template'

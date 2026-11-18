@@ -1,7 +1,7 @@
 info:
   name: Update package
   type: http
-  seq: 8
+  seq: 9
 http:
   method: PATCH
   url: '{{baseUrl}}/api/v1/fleet/software/titles/:id/package'
@@ -20,6 +20,17 @@ http:
         `.deb`, `.rpm`, `.tar.gz`, `.ipa`, `.sh`, `.py`, and `.ps1`.
       disabled: true
       type: file
+    - name: upload_id
+      value: ''
+      description: The `upload_id` from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload).
+        Use instead of `software` to replace the package with one uploaded directly to GCS.
+      disabled: true
+      type: text
+    - name: filename
+      value: ''
+      description: The package's file name, including its extension. Required with `upload_id`.
+      disabled: true
+      type: text
     - name: fleet_id
       value: ''
       description: '**Required**. The fleet ID. Updates a software package in the specified fleet.'
@@ -42,6 +53,13 @@ http:
       description: Command that Fleet runs to install software. If not specified Fleet runs the [default install
         command](https://github.com/fleetdm/fleet/tree/main/pkg/file/scripts) for each package type. Not supported
         for `.sh`, `.py`, and `.ps1`.
+      disabled: true
+      type: text
+    - name: uninstall_script
+      value: ''
+      description: Script that Fleet runs to uninstall software. If set to an empty string, Fleet runs the [default
+        uninstall script](https://github.com/fleetdm/fleet/tree/main/pkg/file/scripts) for each package type if
+        one exists. Required for `.tar.gz` and `.exe` (no default script).
       disabled: true
       type: text
     - name: pre_install_query
@@ -128,10 +146,13 @@ docs: |-
   | ----            | ------- | ---- | --------------------------------------------     |
   | id | integer | path | ID of the software title being updated. |
   | software        | file    | body | Installer package file or custom script file. Supported packages are `.pkg`, `.msi`, `.exe`, `.deb`, `.rpm`, `.tar.gz`, `.ipa`, `.sh`, `.py`, and `.ps1`.   |
+  | upload_id       | string  | body | The `upload_id` from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload). Use instead of `software` to replace the package with one uploaded directly to GCS. |
+  | filename        | string  | body | The package's file name, including its extension. Required with `upload_id`. |
   | fleet_id         | integer | body | **Required**. The fleet ID. Updates a software package in the specified fleet. |
   | display_name    | string  | body | Optional override for the default `name`. |
   | categories        | array | body | Zero or more [self-service category](#list-self-service-categories) names defined on the fleet, used to group self-service software on your end users' **Fleet Desktop > My device** page. Each value must match a category that exists on the fleet. Software with no categories will still be shown under **All**. |
   | install_script  | string | body | Command that Fleet runs to install software. If not specified Fleet runs the [default install command](https://github.com/fleetdm/fleet/tree/main/pkg/file/scripts) for each package type. Not supported for `.sh`, `.py`, and `.ps1`. |
+  | uninstall_script  | string | body | Script that Fleet runs to uninstall software. If set to an empty string, Fleet runs the [default uninstall script](https://github.com/fleetdm/fleet/tree/main/pkg/file/scripts) for each package type if one exists. Required for `.tar.gz` and `.exe` (no default script). |
   | pre_install_query  | string | body | Query that is pre-install condition. If the query doesn't return any result, the package will not be installed. |
   | post_install_script | string | body | The contents of the script to run after install. If the specified script fails (exit code non-zero) software install will be marked as failed and rolled back. |
   | self_service | boolean | body | Whether this is optional self-service software that can be installed by the end user. |
@@ -231,6 +252,17 @@ examples:
           `.deb`, `.rpm`, `.tar.gz`, `.ipa`, `.sh`, `.py`, and `.ps1`.
         disabled: true
         type: file
+      - name: upload_id
+        value: ''
+        description: The `upload_id` from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload).
+          Use instead of `software` to replace the package with one uploaded directly to GCS.
+        disabled: true
+        type: text
+      - name: filename
+        value: ''
+        description: The package's file name, including its extension. Required with `upload_id`.
+        disabled: true
+        type: text
       - name: fleet_id
         value: ''
         description: '**Required**. The fleet ID. Updates a software package in the specified fleet.'
@@ -254,6 +286,13 @@ examples:
         description: Command that Fleet runs to install software. If not specified Fleet runs the [default install
           command](https://github.com/fleetdm/fleet/tree/main/pkg/file/scripts) for each package type. Not supported
           for `.sh`, `.py`, and `.ps1`.
+        disabled: true
+        type: text
+      - name: uninstall_script
+        value: ''
+        description: Script that Fleet runs to uninstall software. If set to an empty string, Fleet runs the [default
+          uninstall script](https://github.com/fleetdm/fleet/tree/main/pkg/file/scripts) for each package type if
+          one exists. Required for `.tar.gz` and `.exe` (no default script).
         disabled: true
         type: text
       - name: pre_install_query

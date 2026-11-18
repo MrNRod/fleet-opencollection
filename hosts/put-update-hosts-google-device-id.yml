@@ -1,0 +1,248 @@
+info:
+  name: Update host's Google device ID
+  type: http
+  seq: 15
+http:
+  method: PUT
+  url: '{{baseUrl}}/api/v1/fleet/hosts/:id/google_device_id'
+  auth: inherit
+  params:
+  - name: id
+    value: ''
+    type: path
+    description: '**Required**. The host''s `id`.'
+  body:
+    type: json
+    data: |-
+      {
+        "google_device_id": "c3d1a9e2-7b4f-4e8a-9f1d-2a6b8c0e4f12"
+      }
+  headers:
+  - name: Content-Type
+    value: application/json
+docs: |-
+  _Available in Fleet Premium._
+
+  `PUT /api/v1/fleet/hosts/:id/google_device_id`
+
+  Binds an iOS, iPadOS, or Android host to its device ID in Google, for [conditional access with Google](https://fleetdm.com/guides/google-conditional-access-integration). Setting the same ID again does nothing. Fleet refuses a different ID than the one already saved, so a registration link copied to another device can't take over the host. Each ID can only be bound to one host. Once set, the ID stays until you remove it with [Delete host's Google device ID](#delete-hosts-google-device-id) or the host is deleted. Wiping the host and enrolling it again doesn't remove it.
+
+  #### Parameters
+
+  | Name             | Type    | In   | Description                                                                   |
+  | ---------------- | ------- | ---- | ----------------------------------------------------------------------------- |
+  | id               | integer | path | **Required**. The host's `id`.                                                |
+  | google_device_id | string  | body | **Required**. The host's device ID in Google. Can't be empty.                 |
+
+  #### Example
+
+  `PUT /api/v1/fleet/hosts/1/google_device_id`
+
+  ##### Request body
+
+  ```json
+  {
+    "google_device_id": "c3d1a9e2-7b4f-4e8a-9f1d-2a6b8c0e4f12"
+  }
+  ```
+
+  ##### Default response
+
+  `Status: 200`
+
+  ```json
+  {
+    "host_id": 1,
+    "google_device_id": "c3d1a9e2-7b4f-4e8a-9f1d-2a6b8c0e4f12"
+  }
+  ```
+
+  ##### Host already has a different Google device ID
+
+  `Status: 409`
+
+  ```json
+  {
+    "message": "Validation Failed",
+    "errors": [
+      {
+        "name": "google_device_id",
+        "reason": "This host already has a different Google device ID."
+      }
+    ]
+  }
+  ```
+
+  ##### Google device ID is bound to another host
+
+  `Status: 409`
+
+  ```json
+  {
+    "message": "Validation Failed",
+    "errors": [
+      {
+        "name": "google_device_id",
+        "reason": "This Google device ID is already used by another host."
+      }
+    ]
+  }
+  ```
+
+  ##### Host isn't an iOS, iPadOS, or Android host
+
+  `Status: 422`
+
+  ```json
+  {
+    "message": "Validation Failed",
+    "errors": [
+      {
+        "name": "google_device_id",
+        "reason": "Google device ID is only supported on iOS, iPadOS, and Android hosts."
+      }
+    ]
+  }
+  ```
+
+  Reference: https://fleetdm.com/docs/rest-api/rest-api#update-hosts-google-device-id
+examples:
+- name: 200 Default response
+  request:
+    method: PUT
+    url: '{{baseUrl}}/api/v1/fleet/hosts/:id/google_device_id'
+    params:
+    - name: id
+      value: ''
+      type: path
+      description: '**Required**. The host''s `id`.'
+    body:
+      type: json
+      data: |-
+        {
+          "google_device_id": "c3d1a9e2-7b4f-4e8a-9f1d-2a6b8c0e4f12"
+        }
+    headers:
+    - name: Content-Type
+      value: application/json
+  response:
+    status: 200
+    statusText: OK
+    body:
+      type: json
+      data: |-
+        {
+          "host_id": 1,
+          "google_device_id": "c3d1a9e2-7b4f-4e8a-9f1d-2a6b8c0e4f12"
+        }
+    headers:
+    - name: Content-Type
+      value: application/json
+- name: 409 Host already has a different Google device ID
+  request:
+    method: PUT
+    url: '{{baseUrl}}/api/v1/fleet/hosts/:id/google_device_id'
+    params:
+    - name: id
+      value: ''
+      type: path
+      description: '**Required**. The host''s `id`.'
+    body:
+      type: json
+      data: |-
+        {
+          "google_device_id": "c3d1a9e2-7b4f-4e8a-9f1d-2a6b8c0e4f12"
+        }
+    headers:
+    - name: Content-Type
+      value: application/json
+  response:
+    status: 409
+    statusText: Conflict
+    body:
+      type: json
+      data: |-
+        {
+          "message": "Validation Failed",
+          "errors": [
+            {
+              "name": "google_device_id",
+              "reason": "This host already has a different Google device ID."
+            }
+          ]
+        }
+    headers:
+    - name: Content-Type
+      value: application/json
+- name: 409 Google device ID is bound to another host
+  request:
+    method: PUT
+    url: '{{baseUrl}}/api/v1/fleet/hosts/:id/google_device_id'
+    params:
+    - name: id
+      value: ''
+      type: path
+      description: '**Required**. The host''s `id`.'
+    body:
+      type: json
+      data: |-
+        {
+          "google_device_id": "c3d1a9e2-7b4f-4e8a-9f1d-2a6b8c0e4f12"
+        }
+    headers:
+    - name: Content-Type
+      value: application/json
+  response:
+    status: 409
+    statusText: Conflict
+    body:
+      type: json
+      data: |-
+        {
+          "message": "Validation Failed",
+          "errors": [
+            {
+              "name": "google_device_id",
+              "reason": "This Google device ID is already used by another host."
+            }
+          ]
+        }
+    headers:
+    - name: Content-Type
+      value: application/json
+- name: 422 Host isn't an iOS, iPadOS, or Android host
+  request:
+    method: PUT
+    url: '{{baseUrl}}/api/v1/fleet/hosts/:id/google_device_id'
+    params:
+    - name: id
+      value: ''
+      type: path
+      description: '**Required**. The host''s `id`.'
+    body:
+      type: json
+      data: |-
+        {
+          "google_device_id": "c3d1a9e2-7b4f-4e8a-9f1d-2a6b8c0e4f12"
+        }
+    headers:
+    - name: Content-Type
+      value: application/json
+  response:
+    status: 422
+    statusText: Unprocessable Content
+    body:
+      type: json
+      data: |-
+        {
+          "message": "Validation Failed",
+          "errors": [
+            {
+              "name": "google_device_id",
+              "reason": "Google device ID is only supported on iOS, iPadOS, and Android hosts."
+            }
+          ]
+        }
+    headers:
+    - name: Content-Type
+      value: application/json

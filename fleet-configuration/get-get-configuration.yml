@@ -15,6 +15,8 @@ docs: |-
 
   `mdm.apple_settings.configuration_profiles`, `mdm.windows_settings.configuration_profiles`, `mdm.setup_experience`, `mdm.volume_purchasing_program`, and `scripts` only include the settings applied using [Fleet's YAML](https://fleetdm.com/docs/configuration/yaml-files). To list the settings added in the UI or API, use the [List configuration profiles](https://fleetdm.com/docs/rest-api/rest-api#list-configuration-profiles), GET endpoints from [Setup experience](https://fleetdm.com/docs/rest-api/rest-api#setup-experience), [List Volume Purchasing Program (VPP) tokens](https://fleetdm.com/docs/rest-api/rest-api#list-volume-purchasing-program-vpp-tokens), or [List scripts](https://fleetdm.com/docs/rest-api/rest-api#list-scripts) instead.
 
+  `auth` is read-only and only returned when one of its settings is enabled. `auth.mdm_windows_one_time_enroll_secrets` reports the [`mdm.windows_one_time_enroll_secrets`](https://fleetdm.com/docs/configuration/fleet-server-configuration#mdm-windows-one-time-enroll-secrets) server configuration.
+
   `GET /api/v1/fleet/config`
 
   #### Parameters
@@ -373,6 +375,7 @@ docs: |-
       "recent_vulnerability_max_age": 2592000000000000
     },
     "max_software_package_size": 10737418240,
+    "staged_upload_available": false,
     "auth": {
       "mdm_apple_one_time_enroll_secrets": true
     }
@@ -734,6 +737,7 @@ examples:
             "recent_vulnerability_max_age": 2592000000000000
           },
           "max_software_package_size": 10737418240,
+          "staged_upload_available": false,
           "auth": {
             "mdm_apple_one_time_enroll_secrets": true
           }

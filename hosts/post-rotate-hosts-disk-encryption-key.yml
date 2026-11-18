@@ -1,0 +1,87 @@
+info:
+  name: Rotate host's disk encryption key
+  type: http
+  seq: 27
+http:
+  method: POST
+  url: '{{baseUrl}}/api/v1/fleet/hosts/:id/encryption_key/rotate'
+  auth: inherit
+  params:
+  - name: id
+    value: ''
+    type: path
+    description: '**Required**. The ID of the host to rotate the disk encryption key for.'
+docs: |-
+  _Available in Fleet Premium_
+
+  Sends an MDM command that rotates the FileVault recovery key for a macOS host. Fleet escrows the new key as soon as the host acknowledges the command. The host doesn't need a user logged in. Until then, [Get host's disk encryption key](#get-hosts-disk-encryption-key) returns the current key with `rotation_pending` set to `true`.
+
+  Fleet uses the host's current key to authorize the rotation, so the current key must be decryptable by Fleet. If the host reports that the rotation failed, Fleet logs a `failed_to_rotate_disk_encryption_key` activity and prompts the end user for their password at their next login to escrow a new key.
+
+  Requirements:
+  - macOS host enrolled in Fleet MDM
+  - Key escrow is turned on for the host's fleet.
+  - The host's current key has been escrowed and is decryptable by Fleet
+
+  `POST /api/v1/fleet/hosts/:id/encryption_key/rotate`
+
+  #### Parameters
+
+  | Name | Type    | In   | Description                                                            |
+  | ---- | ------- | ---- | ---------------------------------------------------------------------- |
+  | id   | integer | path | **Required**. The ID of the host to rotate the disk encryption key for. |
+
+  #### Example
+
+  `POST /api/v1/fleet/hosts/8/encryption_key/rotate`
+
+  ##### Default response
+
+  `Status: 200`
+
+  ##### Rotation already in progress
+
+  `Status: 409`
+
+  ##### Key escrow turned off, or key not decryptable
+
+  `Status: 422`
+
+  Reference: https://fleetdm.com/docs/rest-api/rest-api#rotate-hosts-disk-encryption-key
+examples:
+- name: 200 Default response
+  request:
+    method: POST
+    url: '{{baseUrl}}/api/v1/fleet/hosts/:id/encryption_key/rotate'
+    params:
+    - name: id
+      value: ''
+      type: path
+      description: '**Required**. The ID of the host to rotate the disk encryption key for.'
+  response:
+    status: 200
+    statusText: OK
+- name: 409 Rotation already in progress
+  request:
+    method: POST
+    url: '{{baseUrl}}/api/v1/fleet/hosts/:id/encryption_key/rotate'
+    params:
+    - name: id
+      value: ''
+      type: path
+      description: '**Required**. The ID of the host to rotate the disk encryption key for.'
+  response:
+    status: 409
+    statusText: Conflict
+- name: 422 Key escrow turned off, or key not decryptable
+  request:
+    method: POST
+    url: '{{baseUrl}}/api/v1/fleet/hosts/:id/encryption_key/rotate'
+    params:
+    - name: id
+      value: ''
+      type: path
+      description: '**Required**. The ID of the host to rotate the disk encryption key for.'
+  response:
+    status: 422
+    statusText: Unprocessable Content

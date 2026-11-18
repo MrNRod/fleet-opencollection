@@ -44,6 +44,7 @@ docs: |-
       "name": "Slack",
       "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/90/f7/27/90f727be-835b-54ad-4d9d-8b597e63e321/electron.png/512x512bb.png",
       "source": "apps",
+      "ai_tool": false,
       "extension_for": "",
       "browser": "",
       "hosts_count": 5,
@@ -178,14 +179,17 @@ docs: |-
 
   `browser` and `extension_for` fields are included when set and when empty, at the same level as `source`. `extension_for` will show the browser or Visual Studio Code fork associated with the extension, allowing for differentiation between e.g. an extension installed on Visual Studio Code and one installed on Cursor. `browser` is deprecated, and only shows this information for browser plugins.
 
+  `ai_tool` is available in Fleet Premium. It's `true` when Fleet identified the software as an AI tool. Learn more in the [software inventory reference](https://fleetdm.com/guides/software-inventory-reference#ai-tools). On Fleet Free, it's omitted.
+
   Each entry in `versions` includes `release` when set. For `rpm_packages`, it's the package release (for example, `1.212.el6`). For `go_binaries`, it's the version of the Go toolchain the binary was built with (for example, `go1.26.1`). Fleet uses it to detect Go standard library vulnerabilities, so the same binary version built with two toolchains is listed as two versions.
 
   A software title can have more than one package. The `packages` array lists all packages added for the title, including per-package `self_service`, `categories`, and labels (`labels_include_any`, `labels_exclude_any`, `labels_include_all`). `software_package` is kept for backwards compatibility and contains the oldest (first added) package.
 
   > Install, pending, and failed counts in `packages.status` are combined across policy automations, setup experience, and manual installs.
 
-  For Fleet-maintained apps, software package objects include two additional fields:
+  For Fleet-maintained apps, software package objects include three additional fields:
 
+  - `fleet_maintained_app_slug`: The Fleet-maintained app's slug (e.g. `"google-chrome/darwin"`), used to manage the app in GitOps. Available in Fleet Premium.
   - `pinned_version`: The version the app is pinned to — a specific version (e.g. `"149.0.7827.54"`) or a caret major-version constraint (e.g. `"^147"`). Omitted when the app automatically updates to the latest version.
   - `fleet_maintained_versions`: The versions Fleet has cached and that are available to pin or roll back to. Each entry includes `id`, `version`, and `uploaded_at`. For example:
 
@@ -196,6 +200,7 @@ docs: |-
       "version": "149.0.7827.54",
       "platform": "darwin",
       "fleet_maintained_app_id": 12,
+      "fleet_maintained_app_slug": "google-chrome/darwin",
       "pinned_version": "149.0.7827.54",
       "fleet_maintained_versions": [
         {
@@ -272,6 +277,7 @@ examples:
             "name": "Slack",
             "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/90/f7/27/90f727be-835b-54ad-4d9d-8b597e63e321/electron.png/512x512bb.png",
             "source": "apps",
+            "ai_tool": false,
             "extension_for": "",
             "browser": "",
             "hosts_count": 5,

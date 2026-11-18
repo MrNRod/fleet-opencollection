@@ -1,7 +1,7 @@
 info:
   name: Get disk encryption status
   type: http
-  seq: 15
+  seq: 19
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/fleet/disk_encryption'

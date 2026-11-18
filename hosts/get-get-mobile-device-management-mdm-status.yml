@@ -1,7 +1,7 @@
 info:
   name: Get mobile device management (MDM) status
   type: http
-  seq: 18
+  seq: 20
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/fleet/hosts/summary/mdm'
@@ -48,8 +48,9 @@ docs: |-
       "enrolled_manual_hosts_count": 10,
       "enrolled_automated_hosts_count": 200,
       "enrolled_personal_hosts_count": 30,
+      "enrolled_manual_personal_hosts_count": 5,
       "unenrolled_hosts_count": 0,
-      "hosts_count": 240
+      "hosts_count": 245
     },
     "mobile_device_management_solution": [
       {
@@ -99,8 +100,9 @@ examples:
             "enrolled_manual_hosts_count": 10,
             "enrolled_automated_hosts_count": 200,
             "enrolled_personal_hosts_count": 30,
+            "enrolled_manual_personal_hosts_count": 5,
             "unenrolled_hosts_count": 0,
-            "hosts_count": 240
+            "hosts_count": 245
           },
           "mobile_device_management_solution": [
             {

@@ -1,7 +1,7 @@
 info:
   name: Get host's past activity
   type: http
-  seq: 33
+  seq: 36
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/activities'

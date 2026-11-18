@@ -46,6 +46,7 @@ docs: |-
       "version": "117.0",
       "bundle_identifier": "org.mozilla.firefox",
       "source": "apps",
+      "ai_tool": false,
       "generated_cpe": "cpe:2.3:a:mozilla:firefox:117.0:*:*:*:*:macos:*:*",
       "vulnerabilities": [
         {
@@ -108,6 +109,7 @@ examples:
             "version": "117.0",
             "bundle_identifier": "org.mozilla.firefox",
             "source": "apps",
+            "ai_tool": false,
             "generated_cpe": "cpe:2.3:a:mozilla:firefox:117.0:*:*:*:*:macos:*:*",
             "vulnerabilities": [
               {

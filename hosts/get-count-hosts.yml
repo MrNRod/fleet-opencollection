@@ -61,6 +61,18 @@ http:
     type: query
     disabled: true
     description: The ID of the software title to filter hosts by.
+  - name: software_installer_id
+    value: ''
+    type: query
+    disabled: true
+    description: '**Requires `software_title_id`**. The ID of a specific package of the title to filter hosts by.
+      Use for multi-package titles to filter by one installer.'
+  - name: app_store_app_version_id
+    value: ''
+    type: query
+    disabled: true
+    description: '**Requires `software_title_id`**. The ID of a specific admin-created App Store app version of
+      the title to filter hosts by. iOS, iPadOS, and Android only.'
   - name: os_version_id
     value: ''
     type: query
@@ -104,8 +116,8 @@ http:
     type: query
     disabled: true
     description: The _mobile device management_ (MDM) enrollment status to filter hosts by. Valid options are 'manual',
-      'manual-personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending' only includes Apple (macOS,
-      iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet.
+      'manual-personal', 'personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending' only includes
+      Apple (macOS, iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet.
   - name: macos_settings
     value: ''
     type: query
@@ -169,6 +181,8 @@ docs: |-
   | policy_response         | string  | query | **Requires `policy_id`**. Valid options are 'passing' or 'failing'.                                                                                                                                                                                                                                       |
   | software_version_id     | integer | query | The ID of the software version to filter hosts by.                                                                                                            |
   | software_title_id       | integer | query | The ID of the software title to filter hosts by.                                                                                                              |
+  | software_installer_id   | integer | query | **Requires `software_title_id`**. The ID of a specific package of the title to filter hosts by. Use for multi-package titles to filter by one installer. |
+  | app_store_app_version_id | integer | query | **Requires `software_title_id`**. The ID of a specific admin-created App Store app version of the title to filter hosts by. iOS, iPadOS, and Android only. |
   | os_version_id | integer | query | The ID of the operating system version to filter hosts by. |
   | os_name                 | string  | query | The name of the operating system to filter hosts by. `os_version` must also be specified with `os_name`                                                                                                                                                                                                                                     |
   | os_version              | string  | query | The version of the operating system to filter hosts by. `os_name` must also be specified with `os_version`                                                                                                                                                                                                                                  |
@@ -176,7 +190,7 @@ docs: |-
   | label_id                | integer | query | A valid label ID. Can only be used in combination with `order_key`, `order_direction`, `after`, `status`, `query` and `fleet_id`.                                                                                                                                                                                                            |
   | mdm_id                  | integer | query | The ID of the _mobile device management_ (MDM) solution to filter hosts by (that is, filter hosts that use a specific MDM provider and URL).                                                                                                                                                                                                |
   | mdm_name                | string  | query | The name of the _mobile device management_ (MDM) solution to filter hosts by (that is, filter hosts that use a specific MDM provider).                                                                                                                                                                                                |
-  | mdm_enrollment_status   | string  | query | The _mobile device management_ (MDM) enrollment status to filter hosts by. Valid options are 'manual', 'manual-personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending' only includes Apple (macOS, iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet.   |
+  | mdm_enrollment_status   | string  | query | The _mobile device management_ (MDM) enrollment status to filter hosts by. Valid options are 'manual', 'manual-personal', 'personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending' only includes Apple (macOS, iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet.   |
   | macos_settings          | string  | query | Filters the hosts by the status of the _mobile device management_ (MDM) profiles applied to hosts. Valid options are 'verified', 'verifying', 'pending', or 'failed'. **Note: If this filter is used in Fleet Premium without a fleet ID filter, the results include only "Unassigned" hosts.**                                                                                                                                                                                                             |
   | munki_issue_id          | integer | query | The ID of the _munki issue_ (a Munki-reported error or warning message) to filter hosts by (that is, filter hosts that are affected by that corresponding error or warning message).                                                                                                                                                        |
   | low_disk_space          | integer | query | _Available in Fleet Premium_. Filters the hosts to only include hosts with less GB of disk space available than this value. Must be a number between 1-100.                                                                                                                                                                                  |
@@ -274,6 +288,18 @@ examples:
       type: query
       disabled: true
       description: The ID of the software title to filter hosts by.
+    - name: software_installer_id
+      value: ''
+      type: query
+      disabled: true
+      description: '**Requires `software_title_id`**. The ID of a specific package of the title to filter hosts
+        by. Use for multi-package titles to filter by one installer.'
+    - name: app_store_app_version_id
+      value: ''
+      type: query
+      disabled: true
+      description: '**Requires `software_title_id`**. The ID of a specific admin-created App Store app version of
+        the title to filter hosts by. iOS, iPadOS, and Android only.'
     - name: os_version_id
       value: ''
       type: query
@@ -319,8 +345,8 @@ examples:
       type: query
       disabled: true
       description: The _mobile device management_ (MDM) enrollment status to filter hosts by. Valid options are
-        'manual', 'manual-personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending' only includes
-        Apple (macOS, iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet.
+        'manual', 'manual-personal', 'personal', 'automatic', 'enrolled', 'pending', or 'unenrolled'. 'pending'
+        only includes Apple (macOS, iOS, iPadOS) hosts in Apple Business (AB) that are not yet enrolled to Fleet.
     - name: macos_settings
       value: ''
       type: query

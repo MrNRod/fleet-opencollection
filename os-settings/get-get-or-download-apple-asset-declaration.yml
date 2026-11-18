@@ -1,7 +1,7 @@
 info:
   name: Get or download Apple asset declaration
   type: http
-  seq: 10
+  seq: 12
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/fleet/assets/:asset_uuid'

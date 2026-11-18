@@ -1,7 +1,7 @@
 info:
   name: Add labels to host
   type: http
-  seq: 36
+  seq: 39
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/labels'

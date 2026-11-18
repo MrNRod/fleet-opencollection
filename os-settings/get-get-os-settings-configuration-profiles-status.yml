@@ -1,7 +1,7 @@
 info:
   name: Get OS settings (configuration profiles) status
   type: http
-  seq: 18
+  seq: 22
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/fleet/configuration_profiles/summary'
@@ -46,6 +46,8 @@ docs: |-
     "pending": 123
   }
   ```
+
+  For self-service profiles, the counts include only hosts that opted in. Hosts that can install a self-service profile but haven't aren't counted.
 
   Reference: https://fleetdm.com/docs/rest-api/rest-api#get-os-settings-configuration-profiles-status
 examples:

@@ -1,7 +1,7 @@
 opencollection: 1.0.0
 info:
   name: Fleet REST API
-  version: 4.94.1
+  version: 4.95.0
 request:
   auth:
     type: bearer
@@ -9,9 +9,9 @@ request:
 docs:
   type: text/markdown
   content: |-
-    Unofficial Fleet API collection generated directly from fleet-v4.94.1. HTTP only; excludes WebSocket/SockJS and historical routes mentioned only in deprecation notices.
+    Unofficial Fleet API collection generated directly from fleet-v4.95.0. HTTP only; excludes WebSocket/SockJS and historical routes mentioned only in deprecation notices.
 
-    Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Adapted from [Fleet REST API documentation](https://github.com/fleetdm/fleet/blob/fleet-v4.94.1/docs/REST%20API/rest-api.md).
+    Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Adapted from [Fleet REST API documentation](https://github.com/fleetdm/fleet/blob/fleet-v4.95.0/docs/REST%20API/rest-api.md).
 
     Copyright (c) 2020-present Fleet Device Management Inc. Copyright (c) 2017 Kolide.
 
@@ -19,10 +19,10 @@ docs:
 bundled: false
 extensions:
   fleet:
-    source_ref: fleet-v4.94.1
-    source_sha256: 41aa3cdf443c812574f7e084690659e295bf0c448d26029ef2a8ac17ef724bae
-    operation_count: 273
-    path_count: 204
+    source_ref: fleet-v4.95.0
+    source_sha256: 99574eff690317cf132c7a26b3226e98a98aed2b2d2f978da8715b4ae78687de
+    operation_count: 281
+    path_count: 211
     skipped_sections:
     - Retrieve your API token
     - Retrieve live report results (standard WebSocket API)
@@ -130,6 +130,7 @@ extensions:
     - fleets/post-update-fleet-level-agent-options.yml
     - hosts/delete-cancel-hosts-upcoming-activity.yml
     - hosts/delete-delete-host.yml
+    - hosts/delete-delete-hosts-google-device-id.yml
     - hosts/delete-remove-labels-from-host.yml
     - hosts/delete-turn-off-hosts-mdm.yml
     - hosts/folder.yml
@@ -163,6 +164,7 @@ extensions:
     - hosts/post-refetch-host-by-fleet-desktop-token.yml
     - hosts/post-refetch-host.yml
     - hosts/post-release-host-from-apple-business.yml
+    - hosts/post-rotate-hosts-disk-encryption-key.yml
     - hosts/post-rotate-hosts-managed-local-account-password.yml
     - hosts/post-rotate-hosts-recovery-lock-password.yml
     - hosts/post-run-live-report-on-host-ad-hoc.yml
@@ -172,6 +174,7 @@ extensions:
     - hosts/post-update-hosts-fleet-by-filter.yml
     - hosts/post-update-hosts-fleet.yml
     - hosts/post-wipe-host.yml
+    - hosts/put-update-hosts-google-device-id.yml
     - hosts/put-update-human-device-mapping.yml
     - integrations/delete-delete-android-enterprise.yml
     - integrations/folder.yml
@@ -206,9 +209,13 @@ extensions:
     - os-settings/post-batch-update-configuration-profiles.yml
     - os-settings/post-create-apple-asset-declaration.yml
     - os-settings/post-create-configuration-profile.yml
+    - os-settings/post-install-self-service-configuration-profile-by-fleet-desktop-token.yml
+    - os-settings/post-install-self-service-configuration-profile.yml
     - os-settings/post-resend-configuration-profile-by-fleet-desktop-token.yml
     - os-settings/post-resend-configuration-profile.yml
     - os-settings/post-resend-host-name-template.yml
+    - os-settings/post-uninstall-self-service-configuration-profile-by-fleet-desktop-token.yml
+    - os-settings/post-uninstall-self-service-configuration-profile.yml
     - os-settings/post-update-disk-encryption.yml
     - os-settings/post-update-host-name-template.yml
     - policies/folder.yml
@@ -322,6 +329,7 @@ extensions:
     - software/post-add-fleet-maintained-app.yml
     - software/post-add-package.yml
     - software/post-create-android-web-app.yml
+    - software/post-create-staged-upload.yml
     - software/post-install-self-service-software-by-fleet-desktop-token.yml
     - software/post-install-software.yml
     - software/post-uninstall-software.yml

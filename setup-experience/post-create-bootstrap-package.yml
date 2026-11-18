@@ -11,19 +11,25 @@ http:
     data:
     - name: package
       value: []
-      description: '**Required**. The bootstrap package installer. It must be a signed `pkg` file.'
-      disabled: false
+      description: The bootstrap package installer. It must be a signed `pkg` file. Required unless `upload_id`
+        is specified.
+      disabled: true
       type: file
+    - name: upload_id
+      value: ''
+      description: The `upload_id` from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload).
+        Use instead of `package` for a package uploaded directly to GCS.
+      disabled: true
+      type: text
+    - name: filename
+      value: ''
+      description: The package's file name, for example `bootstrap-package.pkg`. Required with `upload_id`.
+      disabled: true
+      type: text
     - name: fleet_id
       value: ''
       description: The fleet ID for the package. If specified, the package will be installed to hosts that are assigned
         to the specified fleet. If not specified, the package will be installed on "Unassigned" hosts.
-      disabled: true
-      type: text
-    - name: manual_agent_install
-      value: ''
-      description: 'If set to `true` Fleet''s agent (fleetd) won''t be installed as part of automatic enrollment
-        (ADE) on macOS hosts. (Default: `false`)'
       disabled: true
       type: text
 docs: |-
@@ -41,9 +47,10 @@ docs: |-
 
   | Name    | Type   | In   | Description                                                                                                                                                                                                            |
   | ------- | ------ | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | package | file   | body | **Required**. The bootstrap package installer. It must be a signed `pkg` file.                                                                                                                                         |
+  | package | file   | body | The bootstrap package installer. It must be a signed `pkg` file. Required unless `upload_id` is specified.                                                                                                                                         |
+  | upload_id | string | body | The `upload_id` from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload). Use instead of `package` for a package uploaded directly to GCS. |
+  | filename | string | body | The package's file name, for example `bootstrap-package.pkg`. Required with `upload_id`. |
   | fleet_id | string | body | The fleet ID for the package. If specified, the package will be installed to hosts that are assigned to the specified fleet. If not specified, the package will be installed on "Unassigned" hosts. |
-  | manual_agent_install | boolean | body | If set to `true` Fleet's agent (fleetd) won't be installed as part of automatic enrollment (ADE) on macOS hosts. (Default: `false`) |
 
   #### Example
 
@@ -64,6 +71,27 @@ docs: |-
 
   `Status: 200`
 
+
+  #### Staged upload example
+
+  Register a bootstrap package that was uploaded to the URL from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload).
+
+  `POST /api/v1/fleet/bootstrap`
+
+
+  ##### Request body
+
+  ```http
+  fleet_id="1"
+  upload_id="9c8c3146-a2ef-450b-9cc6-70b005d8554e"
+  filename="bootstrap-package.pkg"
+  ```
+
+
+  ##### Default response
+
+  `Status: 200`
+
   Reference: https://fleetdm.com/docs/rest-api/rest-api#create-bootstrap-package
 examples:
 - name: 200 Default response
@@ -75,19 +103,58 @@ examples:
       data:
       - name: package
         value: []
-        description: '**Required**. The bootstrap package installer. It must be a signed `pkg` file.'
-        disabled: false
+        description: The bootstrap package installer. It must be a signed `pkg` file. Required unless `upload_id`
+          is specified.
+        disabled: true
         type: file
+      - name: upload_id
+        value: ''
+        description: The `upload_id` from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload).
+          Use instead of `package` for a package uploaded directly to GCS.
+        disabled: true
+        type: text
+      - name: filename
+        value: ''
+        description: The package's file name, for example `bootstrap-package.pkg`. Required with `upload_id`.
+        disabled: true
+        type: text
       - name: fleet_id
         value: ''
         description: The fleet ID for the package. If specified, the package will be installed to hosts that are
           assigned to the specified fleet. If not specified, the package will be installed on "Unassigned" hosts.
         disabled: true
         type: text
-      - name: manual_agent_install
+  response:
+    status: 200
+    statusText: OK
+- name: 200 Default response
+  request:
+    method: POST
+    url: '{{baseUrl}}/api/v1/fleet/bootstrap'
+    body:
+      type: multipart-form
+      data:
+      - name: package
+        value: []
+        description: The bootstrap package installer. It must be a signed `pkg` file. Required unless `upload_id`
+          is specified.
+        disabled: true
+        type: file
+      - name: upload_id
         value: ''
-        description: 'If set to `true` Fleet''s agent (fleetd) won''t be installed as part of automatic enrollment
-          (ADE) on macOS hosts. (Default: `false`)'
+        description: The `upload_id` from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload).
+          Use instead of `package` for a package uploaded directly to GCS.
+        disabled: true
+        type: text
+      - name: filename
+        value: ''
+        description: The package's file name, for example `bootstrap-package.pkg`. Required with `upload_id`.
+        disabled: true
+        type: text
+      - name: fleet_id
+        value: ''
+        description: The fleet ID for the package. If specified, the package will be installed to hosts that are
+          assigned to the specified fleet. If not specified, the package will be installed on "Unassigned" hosts.
         disabled: true
         type: text
   response:

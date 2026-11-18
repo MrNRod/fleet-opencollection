@@ -1,0 +1,59 @@
+info:
+  name: Install self-service configuration profile
+  type: http
+  seq: 7
+http:
+  method: POST
+  url: '{{baseUrl}}/api/v1/fleet/hosts/:id/configuration_profiles/:profile_uuid/install'
+  auth: inherit
+  params:
+  - name: id
+    value: ''
+    type: path
+    description: '**Required.** The host''s ID.'
+  - name: profile_uuid
+    value: ''
+    type: path
+    description: '**Required.** The UUID of the self-service configuration profile to install.'
+docs: |-
+  _Available in Fleet Premium._
+
+  Installs a self-service (opt-in) configuration profile on the specified host on the end user's behalf. Fleet queues the install and delivers it on the next profile run. Only `.mobileconfig` profiles with `self_service` set to `true` can be installed this way.
+
+  `POST /api/v1/fleet/hosts/:id/configuration_profiles/:profile_uuid/install`
+
+  #### Parameters
+
+  | Name | Type | In | Description |
+  | ---- | ---- | -- | ----------- |
+  | id   | integer | path | **Required.** The host's ID. |
+  | profile_uuid   | string | path | **Required.** The UUID of the self-service configuration profile to install. |
+
+  #### Example
+
+  `POST /api/v1/fleet/hosts/233/configuration_profiles/fc14a20-84a2-42d8-9257-a425f62bb54d/install`
+
+  ##### Default response
+
+  `Status: 202`
+
+  If the profile isn't self-service, or the host isn't targeted by the profile's labels, the response is `Status: 400`. If the profile is already installed or installing on the host, the response is `Status: 409`.
+
+  Reference: https://fleetdm.com/docs/rest-api/rest-api#install-self-service-configuration-profile
+examples:
+- name: 202 Default response
+  request:
+    method: POST
+    url: '{{baseUrl}}/api/v1/fleet/hosts/:id/configuration_profiles/:profile_uuid/install'
+    params:
+    - name: id
+      value: ''
+      type: path
+      description: '**Required.** The host''s ID.'
+    - name: profile_uuid
+      value: ''
+      type: path
+      description: '**Required.** The UUID of the self-service configuration profile to install.'
+  response:
+    status: 202
+    statusText: Accepted

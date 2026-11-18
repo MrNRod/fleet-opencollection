@@ -58,6 +58,8 @@ docs: |-
 
   This endpoint returns the list of custom MDM commands that have been executed.
 
+  Fleet deletes old MDM command history on a schedule, so older commands may not be listed. Learn more in the [MDM commands guide](https://fleetdm.com/guides/mdm-commands#command-history-retention).
+
   `GET /api/v1/fleet/commands`
 
   #### Parameters

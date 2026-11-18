@@ -1,7 +1,7 @@
 info:
   name: Batch-resend configuration profile
   type: http
-  seq: 13
+  seq: 17
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/configuration_profiles/resend/batch'

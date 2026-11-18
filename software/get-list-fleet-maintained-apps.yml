@@ -1,7 +1,7 @@
 info:
   name: List Fleet-maintained apps
   type: http
-  seq: 15
+  seq: 16
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/fleet/software/fleet_maintained_apps'

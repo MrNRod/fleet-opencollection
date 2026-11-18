@@ -1,7 +1,7 @@
 info:
   name: Run live report on host by identifier (ad hoc)
   type: http
-  seq: 39
+  seq: 42
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/hosts/identifier/:identifier/query'
