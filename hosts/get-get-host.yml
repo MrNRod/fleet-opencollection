@@ -50,47 +50,49 @@ docs: "Returns the information of the specified host.\n\n`GET /api/v1/fleet/host
   : null,\n    \"pack_stats\": null,\n    \"team_name\": null,\n    \"fleet_name\": null,\n    \"gigs_disk_space_available\"\
   : 174.98,\n    \"percent_disk_space_available\": 71,\n    \"gigs_total_disk_space\": 246,\n    \"disk_encryption_enabled\"\
   : true,\n    \"status\": \"online\",\n    \"display_text\": \"Annas-MacBook-Pro.local\",\n    \"apple_business_source\"\
-  : \"Apple\",\n    \"additional\": {},\n    \"issues\": {\n      \"failing_policies_count\": 1,\n      \"critical_vulnerabilities_count\"\
-  : 2, // Available in Fleet Premium\n      \"total_issues_count\": 3\n    },\n    \"batteries\": [\n      {\n \
-  \       \"cycle_count\": 999,\n        \"health\": \"Normal\"\n      }\n    ],\n    \"geolocation\": {\n     \
-  \ \"country_iso\": \"US\",\n      \"city_name\": \"New York\",\n      \"geometry\": {\n        \"type\": \"point\"\
-  ,\n        \"coordinates\": [40.6799, -74.0028]\n      }\n    },\n    \"maintenance_window\": {\n      \"starts_at\"\
-  : \"2024-06-18T13:27:18-04:00\",\n      \"timezone\": \"America/New_York\"\n    },\n    \"users\": [\n      {\n\
-  \        \"uid\": 0,\n        \"username\": \"root\",\n        \"type\": \"\",\n        \"groupname\": \"root\"\
-  ,\n        \"shell\": \"/bin/sh\"\n      },\n      {\n        \"uid\": 1,\n        \"username\": \"annachao\"\
-  ,\n        \"type\": \"\",\n        \"groupname\": \"staff\",\n        \"shell\": \"/bin/zsh\"\n      }\n    ],\n\
-  \    \"end_users\": [\n      {\n        \"idp_info_updated_at\": \"2025-03-20T02:02:17Z\",\n        \"idp_id\"\
-  : \"f26f8649-1e25-42c5-be71-1b1e6de56d3d\",\n        \"idp_username\": \"anna@acme.com\",\n        \"idp_full_name\"\
-  : \"Anna Chao\",\n        \"idp_department\": \"Product\",\n        \"idp_groups\": [\n          \"Product\",\n\
-  \          \"Designers\"\n        ],\n        \"other_emails\": [\n          {\n            \"email\": \"anna@example.com\"\
-  ,\n            \"source\": \"google_chrome_profiles\"\n          },\n          {\n            \"email\": \"anna@example.com\"\
-  ,\n            \"source\": \"custom\"\n          }\n        ]\n      }\n    ],\n    \"labels\": [\n      {\n \
-  \       \"created_at\": \"2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\",\n       \
-  \ \"id\": 6,\n        \"name\": \"All Hosts\",\n        \"description\": \"All hosts which have enrolled in Fleet\"\
-  ,\n        \"query\": \"SELECT 1;\",\n        \"platform\": \"\",\n        \"label_type\": \"builtin\",\n    \
-  \    \"label_membership_type\": \"dynamic\"\n      },\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\"\
-  ,\n        \"updated_at\": \"2021-08-19T02:02:17Z\",\n        \"id\": 9,\n        \"name\": \"macOS\",\n     \
-  \   \"description\": \"All macOS hosts\",\n        \"query\": \"select 1 from os_version where platform = 'darwin';\"\
-  ,\n        \"platform\": \"\",\n        \"label_type\": \"builtin\",\n        \"label_membership_type\": \"dynamic\"\
-  \n      },\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\"\
-  ,\n        \"id\": 12,\n        \"name\": \"Hosts with Chrome installed\",\n        \"description\": \"\",\n \
-  \       \"query\": \"SELECT * FROM apps WHERE name LIKE \\\"%Chrome%\\\"\",\n        \"platform\": \"\",\n   \
-  \     \"label_type\": \"regular\",\n        \"label_membership_type\": \"dynamic\"\n      }\n    ],\n    \"packs\"\
-  : [],\n    \"policies\": [\n      {\n        \"id\": 2,\n        \"name\": \"SomeQuery2\",\n        \"query\"\
-  : \"SELECT * FROM bar;\",\n        \"description\": \"this is another query\",\n        \"resolution\": \"fix\
-  \ with these other steps...\",\n        \"platform\": \"darwin\",\n        \"response\": \"fail\",\n        \"\
-  critical\": false\n      },\n      {\n        \"id\": 3,\n        \"name\": \"SomeQuery3\",\n        \"query\"\
-  : \"SELECT * FROM baz;\",\n        \"description\": \"\",\n        \"resolution\": \"\",\n        \"platform\"\
-  : \"\",\n        \"response\": \"\",\n        \"critical\": false\n      },\n      {\n        \"id\": 1,\n   \
-  \     \"name\": \"SomeQuery\",\n        \"query\": \"SELECT * FROM foo;\",\n        \"description\": \"this is\
-  \ a query\",\n        \"resolution\": \"fix with these steps...\",\n        \"platform\": \"windows,linux\",\n\
-  \        \"response\": \"pass\",\n        \"critical\": false\n      }\n    ],\n    \"software\": [\n      {\n\
-  \        \"id\": 321,\n        \"name\": \"macOSApp\",\n        \"version\": \"1.0\",\n        \"source\": \"\
-  apps\",\n        \"bundle_identifier\": \"com.some.app\",\n        \"last_opened_at\": \"2021-08-18T21:14:00Z\"\
-  ,\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\": null,\n        \"installed_paths\": [\"/usr/lib/some-path-2\"\
-  ]\n      },\n      {\n        \"id\": 322,\n        \"name\": \"Windows\",\n        \"version\": \"1.0\",\n  \
-  \      \"source\": \"programs\",\n        \"upgrade_code\": \"{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}\",\n    \
-  \    \"last_opened_at\": \"2021-08-18T21:14:00Z\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\"\
+  : \"Apple\",\n    \"additional\": {},\n    \"issues\": {\n      \"failing_policies_count\": 1,\n      \"failing_unhidden_policies_count\"\
+  : 1, // Available in Fleet Premium\n      \"hidden_policies_count\": 0, // Available in Fleet Premium\n      \"\
+  critical_vulnerabilities_count\": 2, // Available in Fleet Premium\n      \"total_issues_count\": 3\n    },\n\
+  \    \"batteries\": [\n      {\n        \"cycle_count\": 999,\n        \"health\": \"Normal\"\n      }\n    ],\n\
+  \    \"geolocation\": {\n      \"country_iso\": \"US\",\n      \"city_name\": \"New York\",\n      \"geometry\"\
+  : {\n        \"type\": \"point\",\n        \"coordinates\": [40.6799, -74.0028]\n      }\n    },\n    \"maintenance_window\"\
+  : {\n      \"starts_at\": \"2024-06-18T13:27:18-04:00\",\n      \"timezone\": \"America/New_York\"\n    },\n \
+  \   \"users\": [\n      {\n        \"uid\": 0,\n        \"username\": \"root\",\n        \"type\": \"\",\n   \
+  \     \"groupname\": \"root\",\n        \"shell\": \"/bin/sh\"\n      },\n      {\n        \"uid\": 1,\n     \
+  \   \"username\": \"annachao\",\n        \"type\": \"\",\n        \"groupname\": \"staff\",\n        \"shell\"\
+  : \"/bin/zsh\"\n      }\n    ],\n    \"end_users\": [\n      {\n        \"idp_info_updated_at\": \"2025-03-20T02:02:17Z\"\
+  ,\n        \"idp_id\": \"f26f8649-1e25-42c5-be71-1b1e6de56d3d\",\n        \"idp_username\": \"anna@acme.com\"\
+  ,\n        \"idp_full_name\": \"Anna Chao\",\n        \"idp_department\": \"Product\",\n        \"idp_groups\"\
+  : [\n          \"Product\",\n          \"Designers\"\n        ],\n        \"other_emails\": [\n          {\n \
+  \           \"email\": \"anna@example.com\",\n            \"source\": \"google_chrome_profiles\"\n          },\n\
+  \          {\n            \"email\": \"anna@example.com\",\n            \"source\": \"custom\"\n          }\n\
+  \        ]\n      }\n    ],\n    \"labels\": [\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\",\n \
+  \       \"updated_at\": \"2021-08-19T02:02:17Z\",\n        \"id\": 6,\n        \"name\": \"All Hosts\",\n    \
+  \    \"description\": \"All hosts which have enrolled in Fleet\",\n        \"query\": \"SELECT 1;\",\n       \
+  \ \"platform\": \"\",\n        \"label_type\": \"builtin\",\n        \"label_membership_type\": \"dynamic\"\n\
+  \      },\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\"\
+  ,\n        \"id\": 9,\n        \"name\": \"macOS\",\n        \"description\": \"All macOS hosts\",\n        \"\
+  query\": \"select 1 from os_version where platform = 'darwin';\",\n        \"platform\": \"\",\n        \"label_type\"\
+  : \"builtin\",\n        \"label_membership_type\": \"dynamic\"\n      },\n      {\n        \"created_at\": \"\
+  2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\",\n        \"id\": 12,\n        \"name\"\
+  : \"Hosts with Chrome installed\",\n        \"description\": \"\",\n        \"query\": \"SELECT * FROM apps WHERE\
+  \ name LIKE \\\"%Chrome%\\\"\",\n        \"platform\": \"\",\n        \"label_type\": \"regular\",\n        \"\
+  label_membership_type\": \"dynamic\"\n      }\n    ],\n    \"packs\": [],\n    \"policies\": [\n      {\n    \
+  \    \"id\": 2,\n        \"name\": \"SomeQuery2\",\n        \"query\": \"SELECT * FROM bar;\",\n        \"description\"\
+  : \"this is another query\",\n        \"resolution\": \"fix with these other steps...\",\n        \"platform\"\
+  : \"darwin\",\n        \"response\": \"fail\",\n        \"critical\": false\n      },\n      {\n        \"id\"\
+  : 3,\n        \"name\": \"SomeQuery3\",\n        \"query\": \"SELECT * FROM baz;\",\n        \"description\":\
+  \ \"\",\n        \"resolution\": \"\",\n        \"platform\": \"\",\n        \"response\": \"\",\n        \"critical\"\
+  : false\n      },\n      {\n        \"id\": 1,\n        \"name\": \"SomeQuery\",\n        \"query\": \"SELECT\
+  \ * FROM foo;\",\n        \"description\": \"this is a query\",\n        \"resolution\": \"fix with these steps...\"\
+  ,\n        \"platform\": \"windows,linux\",\n        \"response\": \"pass\",\n        \"critical\": false\n  \
+  \    }\n    ],\n    \"software\": [\n      {\n        \"id\": 321,\n        \"name\": \"macOSApp\",\n        \"\
+  version\": \"1.0\",\n        \"source\": \"apps\",\n        \"ai_tool\": false,\n        \"bundle_identifier\"\
+  : \"com.some.app\",\n        \"last_opened_at\": \"2021-08-18T21:14:00Z\",\n        \"generated_cpe\": \"\",\n\
+  \        \"vulnerabilities\": null,\n        \"installed_paths\": [\"/usr/lib/some-path-2\"]\n      },\n     \
+  \ {\n        \"id\": 322,\n        \"name\": \"Windows\",\n        \"version\": \"1.0\",\n        \"source\":\
+  \ \"programs\",\n        \"ai_tool\": false,\n        \"upgrade_code\": \"{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}\"\
+  ,\n        \"last_opened_at\": \"2021-08-18T21:14:00Z\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\"\
   : null,\n        \"installed_paths\": [\"/usr/lib/some-path-2\"]\n      },\n      {\n        \"id\": 323,\n  \
   \      \"name\": \"gopls\",\n        \"version\": \"v0.21.1\",\n        \"source\": \"go_binaries\",\n       \
   \ \"release\": \"go1.26.1\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\": null,\n        \"\
@@ -108,9 +110,18 @@ docs: "Returns the information of the specified host.\n\n`GET /api/v1/fleet/host
   \        \"status\": \"verified\",\n          \"detail\": \"\"\n        }\n      },\n      \"profiles\": [\n \
   \       {\n          \"profile_uuid\": \"954ec5ea-a334-4825-87b3-937e7e381f24\",\n          \"name\": \"profile1\"\
   ,\n          \"status\": \"verifying\",\n          \"operation_type\": \"install\",\n          \"scope\": \"device\"\
-  ,\n          \"managed_local_account\": \"\",\n          \"detail\": \"\"\n        }\n      ]\n    }\n  }\n}\n\
-  ```\n\n#### Example (iOS/iPadOS)\n`GET /api/v1/fleet/hosts/121`\n\n##### Default response\n\n`Status: 200`\n\n\
-  ```json\n{\n  \"host\": {\n    \"created_at\": \"2021-08-19T02:02:22Z\",\n    \"updated_at\": \"2021-08-19T21:14:58Z\"\
+  ,\n          \"managed_local_account\": \"\",\n          \"detail\": \"\",\n          \"self_service\": true,\n\
+  \          \"hidden\": false\n        },\n        {\n          \"profile_uuid\": \"954ec5ea-a334-4825-87b3-937e7e381234\"\
+  ,\n          \"name\": \"profile2\",\n          \"status\": \"verifying\",\n          \"operation_type\": \"install\"\
+  ,\n          \"scope\": \"device\",\n          \"managed_local_account\": \"\",\n          \"detail\": \"\",\n\
+  \          \"self_service\": false,\n          \"hidden\": true\n        },\n        {\n          \"profile_uuid\"\
+  : \"954ec5ea-a334-4825-87b3-937e7e385678\",\n          \"name\": \"profile3\",\n          \"status\": null,\n\
+  \          \"operation_type\": \"\",\n          \"scope\": \"device\",\n          \"managed_local_account\": \"\
+  \",\n          \"detail\": \"\",\n          \"self_service\": true,\n          \"hidden\": false\n        }\n\
+  \      ]\n    }\n  }\n}\n```\n\nA profile with `\"status\": null` is a self-service profile the host can install\
+  \ but hasn't yet. Once the end user or an IT admin installs it, `status` follows the same values as any other\
+  \ profile.\n\n#### Example (iOS/iPadOS)\n`GET /api/v1/fleet/hosts/121`\n\n##### Default response\n\n`Status: 200`\n\
+  \n```json\n{\n  \"host\": {\n    \"created_at\": \"2021-08-19T02:02:22Z\",\n    \"updated_at\": \"2021-08-19T21:14:58Z\"\
   ,\n    \"id\": 1,\n    \"detail_updated_at\": \"2021-08-19T21:07:53Z\",\n    \"last_restarted_at\": \"2020-11-01T03:01:45Z\"\
   ,\n    \"software_updated_at\": \"2020-11-05T05:09:44Z\",\n    \"label_updated_at\": \"2021-08-19T21:07:53Z\"\
   ,\n    \"policy_updated_at\": \"2023-06-26T18:33:15Z\",\n    \"last_enrolled_at\": \"2021-08-19T02:02:22Z\",\n\
@@ -157,47 +168,49 @@ docs: "Returns the information of the specified host.\n\n`GET /api/v1/fleet/host
   : \"Verizon\"\n      }\n    ],\n    \"supplemental_build_version\": \"21E236\",\n    \"supplemental_os_version_extra\"\
   : \"(a)\",\n    \"wifi_mac\": \"a4:83:e7:12:34:58\",\n    \"disk_encryption_enabled\": true,\n    \"status\":\
   \ \"online\",\n    \"display_text\": \"Annas-iPhone\",\n    \"additional\": {},\n    \"issues\": {\n      \"failing_policies_count\"\
-  : 1,\n      \"critical_vulnerabilities_count\": 2, // Available in Fleet Premium\n      \"total_issues_count\"\
-  : 3\n    },\n    \"batteries\": [\n      {\n        \"cycle_count\": 187,\n        \"health\": \"Normal\"\n  \
-  \    }\n    ],\n    \"geolocation\": {\n      \"country_iso\": \"US\",\n      \"city_name\": \"New York\",\n \
-  \     \"geometry\": {\n        \"type\": \"point\",\n        \"coordinates\": [40.6799, -74.0028]\n      }\n \
-  \   },\n    \"maintenance_window\": {\n      \"starts_at\": \"2024-06-18T13:27:18−04:00\",\n      \"timezone\"\
-  : \"America/New_York\"\n    },\n    \"users\": [\n      {\n        \"uid\": 501,\n        \"username\": \"annachao\"\
-  ,\n        \"type\": \"\",\n        \"groupname\": \"mobile\",\n        \"shell\": \"\"\n      }\n    ],\n   \
-  \ \"end_users\": [\n      {\n        \"idp_info_updated_at\": \"2025-03-20T02:02:17Z\",\n        \"idp_id\": \"\
-  f26f8649-1e25-42c5-be71-1b1e6de56d3d\",\n        \"idp_username\": \"anna@example.com\",\n        \"idp_full_name\"\
-  : \"Anna Chao\",\n        \"idp_department\": \"Product\",\n        \"idp_groups\": [\n          \"Product\",\n\
-  \          \"Designers\"\n        ],\n        \"other_emails\": [\n          {\n            \"email\": \"anna2@example.com\"\
-  ,\n            \"source\": \"managed_apple_id\"\n          },\n          {\n            \"email\": \"anna3@example.com\"\
-  ,\n            \"source\": \"custom\"\n          }\n        ]\n      }\n    ],\n    \"labels\": [\n      {\n \
-  \       \"created_at\": \"2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\",\n       \
-  \ \"id\": 6,\n        \"name\": \"All Hosts\",\n        \"description\": \"All hosts which have enrolled in Fleet\"\
-  ,\n        \"query\": \"SELECT 1;\",\n        \"platform\": \"\",\n        \"label_type\": \"builtin\",\n    \
-  \    \"label_membership_type\": \"dynamic\"\n      },\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\"\
-  ,\n        \"updated_at\": \"2021-08-19T02:02:17Z\",\n        \"id\": 9,\n        \"name\": \"iOS\",\n       \
-  \ \"description\": \"All iOS hosts\",\n        \"query\": \"SELECT 1 FROM osquery_info WHERE build_platform =\
-  \ 'ios';\",\n        \"platform\": \"ios\",\n        \"label_type\": \"builtin\",\n        \"label_membership_type\"\
-  : \"dynamic\"\n      },\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\",\n        \"updated_at\": \"\
-  2021-08-19T02:02:17Z\",\n        \"id\": 12,\n        \"name\": \"Hosts with Gmail installed\",\n        \"description\"\
-  : \"\",\n        \"query\": \"SELECT * FROM apps WHERE name LIKE \\\"%Gmail%\\\"\",\n        \"platform\": \"\
-  ios\",\n        \"label_type\": \"regular\",\n        \"label_membership_type\": \"dynamic\"\n      }\n    ],\n\
-  \    \"packs\": [],\n    \"policies\": [\n      {\n        \"id\": 2,\n        \"name\": \"Passcode required (iOS)\"\
-  ,\n        \"query\": \"SELECT 1 FROM managed_policies WHERE domain = 'com.apple.mobiledevice.passwordpolicy'\
-  \ AND name = 'forcePIN' AND value = 1 LIMIT 1;\",\n        \"description\": \"Checks that a passcode is enforced\
-  \ on the device.\",\n        \"resolution\": \"Go to Settings > Face ID & Passcode > Turn Passcode On.\",\n  \
-  \      \"platform\": \"ios\",\n        \"response\": \"fail\",\n        \"critical\": false\n      },\n      {\n\
-  \        \"id\": 3,\n        \"name\": \"SomeQuery3\",\n        \"query\": \"SELECT * FROM baz;\",\n        \"\
-  description\": \"\",\n        \"resolution\": \"\",\n        \"platform\": \"\",\n        \"response\": \"\",\n\
-  \        \"critical\": false\n      },\n      {\n        \"id\": 1,\n        \"name\": \"OS version up to date\
-  \ (iOS)\",\n        \"query\": \"SELECT 1 FROM os_version WHERE version >= '17.4.1';\",\n        \"description\"\
-  : \"Checks that the device is running the latest iOS version.\",\n        \"resolution\": \"Go to Settings > General\
-  \ > Software Update and install the latest update.\",\n        \"platform\": \"ios\",\n        \"response\": \"\
-  pass\",\n        \"critical\": false\n      }\n    ],\n    \"software\": [\n      {\n        \"id\": 321,\n  \
-  \      \"name\": \"Gmail\",\n        \"version\": \"6.0.240414\",\n        \"source\": \"ios_apps\",\n       \
-  \ \"bundle_identifier\": \"com.google.Gmail\",\n        \"last_opened_at\": \"2021-08-18T21:14:00Z\",\n      \
-  \  \"generated_cpe\": \"\",\n        \"vulnerabilities\": null,\n        \"installed_paths\": [\"/var/containers/Bundle/Application/\"\
-  ]\n      },\n      {\n        \"id\": 322,\n        \"name\": \"Slack\",\n        \"version\": \"23.10.10\",\n\
-  \        \"source\": \"ios_apps\",\n        \"bundle_identifier\": \"com.tinyspeck.chatlyio\",\n        \"last_opened_at\"\
+  : 1,\n      \"failing_unhidden_policies_count\": 1, // Available in Fleet Premium\n      \"hidden_policies_count\"\
+  : 0, // Available in Fleet Premium\n      \"critical_vulnerabilities_count\": 2, // Available in Fleet Premium\n\
+  \      \"total_issues_count\": 3\n    },\n    \"batteries\": [\n      {\n        \"cycle_count\": 187,\n     \
+  \   \"health\": \"Normal\"\n      }\n    ],\n    \"geolocation\": {\n      \"country_iso\": \"US\",\n      \"\
+  city_name\": \"New York\",\n      \"geometry\": {\n        \"type\": \"point\",\n        \"coordinates\": [40.6799,\
+  \ -74.0028]\n      }\n    },\n    \"maintenance_window\": {\n      \"starts_at\": \"2024-06-18T13:27:18−04:00\"\
+  ,\n      \"timezone\": \"America/New_York\"\n    },\n    \"users\": [\n      {\n        \"uid\": 501,\n      \
+  \  \"username\": \"annachao\",\n        \"type\": \"\",\n        \"groupname\": \"mobile\",\n        \"shell\"\
+  : \"\"\n      }\n    ],\n    \"end_users\": [\n      {\n        \"idp_info_updated_at\": \"2025-03-20T02:02:17Z\"\
+  ,\n        \"idp_id\": \"f26f8649-1e25-42c5-be71-1b1e6de56d3d\",\n        \"idp_username\": \"anna@example.com\"\
+  ,\n        \"idp_full_name\": \"Anna Chao\",\n        \"idp_department\": \"Product\",\n        \"idp_groups\"\
+  : [\n          \"Product\",\n          \"Designers\"\n        ],\n        \"other_emails\": [\n          {\n \
+  \           \"email\": \"anna2@example.com\",\n            \"source\": \"managed_apple_id\"\n          },\n  \
+  \        {\n            \"email\": \"anna3@example.com\",\n            \"source\": \"custom\"\n          }\n \
+  \       ]\n      }\n    ],\n    \"labels\": [\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\",\n  \
+  \      \"updated_at\": \"2021-08-19T02:02:17Z\",\n        \"id\": 6,\n        \"name\": \"All Hosts\",\n     \
+  \   \"description\": \"All hosts which have enrolled in Fleet\",\n        \"query\": \"SELECT 1;\",\n        \"\
+  platform\": \"\",\n        \"label_type\": \"builtin\",\n        \"label_membership_type\": \"dynamic\"\n    \
+  \  },\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\"\
+  ,\n        \"id\": 9,\n        \"name\": \"iOS\",\n        \"description\": \"All iOS hosts\",\n        \"query\"\
+  : \"SELECT 1 FROM osquery_info WHERE build_platform = 'ios';\",\n        \"platform\": \"ios\",\n        \"label_type\"\
+  : \"builtin\",\n        \"label_membership_type\": \"dynamic\"\n      },\n      {\n        \"created_at\": \"\
+  2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\",\n        \"id\": 12,\n        \"name\"\
+  : \"Hosts with Gmail installed\",\n        \"description\": \"\",\n        \"query\": \"SELECT * FROM apps WHERE\
+  \ name LIKE \\\"%Gmail%\\\"\",\n        \"platform\": \"ios\",\n        \"label_type\": \"regular\",\n       \
+  \ \"label_membership_type\": \"dynamic\"\n      }\n    ],\n    \"packs\": [],\n    \"policies\": [\n      {\n\
+  \        \"id\": 2,\n        \"name\": \"Passcode required (iOS)\",\n        \"query\": \"SELECT 1 FROM managed_policies\
+  \ WHERE domain = 'com.apple.mobiledevice.passwordpolicy' AND name = 'forcePIN' AND value = 1 LIMIT 1;\",\n   \
+  \     \"description\": \"Checks that a passcode is enforced on the device.\",\n        \"resolution\": \"Go to\
+  \ Settings > Face ID & Passcode > Turn Passcode On.\",\n        \"platform\": \"ios\",\n        \"response\":\
+  \ \"fail\",\n        \"critical\": false\n      },\n      {\n        \"id\": 3,\n        \"name\": \"SomeQuery3\"\
+  ,\n        \"query\": \"SELECT * FROM baz;\",\n        \"description\": \"\",\n        \"resolution\": \"\",\n\
+  \        \"platform\": \"\",\n        \"response\": \"\",\n        \"critical\": false\n      },\n      {\n  \
+  \      \"id\": 1,\n        \"name\": \"OS version up to date (iOS)\",\n        \"query\": \"SELECT 1 FROM os_version\
+  \ WHERE version >= '17.4.1';\",\n        \"description\": \"Checks that the device is running the latest iOS version.\"\
+  ,\n        \"resolution\": \"Go to Settings > General > Software Update and install the latest update.\",\n  \
+  \      \"platform\": \"ios\",\n        \"response\": \"pass\",\n        \"critical\": false\n      }\n    ],\n\
+  \    \"software\": [\n      {\n        \"id\": 321,\n        \"name\": \"Gmail\",\n        \"version\": \"6.0.240414\"\
+  ,\n        \"source\": \"ios_apps\",\n        \"ai_tool\": false,\n        \"bundle_identifier\": \"com.google.Gmail\"\
+  ,\n        \"last_opened_at\": \"2021-08-18T21:14:00Z\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\"\
+  : null,\n        \"installed_paths\": [\"/var/containers/Bundle/Application/\"]\n      },\n      {\n        \"\
+  id\": 322,\n        \"name\": \"Slack\",\n        \"version\": \"23.10.10\",\n        \"source\": \"ios_apps\"\
+  ,\n        \"ai_tool\": false,\n        \"bundle_identifier\": \"com.tinyspeck.chatlyio\",\n        \"last_opened_at\"\
   : \"2021-08-18T21:14:00Z\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\": null,\n        \"\
   installed_paths\": [\"/var/containers/Bundle/Application/\"]\n      }\n    ],\n    \"mdm\": {\n      \"encryption_key_available\"\
   : false,\n      \"enrollment_status\": \"On (automatic)\",\n      \"name\": \"Fleet\",\n      \"connected_to_fleet\"\
@@ -241,42 +254,44 @@ docs: "Returns the information of the specified host.\n\n`GET /api/v1/fleet/host
   ,\n    \"telephony_infos\": [\n      {\n        \"phone_number\": \"+15551234567\",\n        \"carrier_name\"\
   : \"Verizon\",\n        \"iccid\": \"89014103211118510720\",\n        \"activation_state\": \"ACTIVATED\",\n \
   \       \"config_mode\": \"ADMIN_CONFIGURED\"\n      }\n    ],\n    \"status\": \"online\",\n    \"display_text\"\
-  : \"Anna Chao's Google Pixel 9\",\n    \"issues\": {\n      \"failing_policies_count\": 0,\n      \"critical_vulnerabilities_count\"\
-  : 0, // Available in Fleet Premium\n      \"total_issues_count\": 0\n    },\n    \"batteries\": [],\n    \"end_users\"\
-  : [\n      {\n        \"idp_info_updated_at\": \"2025-03-20T02:02:17Z\",\n        \"idp_id\": \"f26f8649-1e25-42c5-be71-1b1e6de56d3d\"\
-  ,\n        \"idp_username\": \"anna@example.com\",\n        \"idp_full_name\": \"Anna Chao\",\n        \"idp_department\"\
-  : \"Product\",\n        \"idp_groups\": [\n          \"Product\",\n          \"Designers\"\n        ],\n     \
-  \   \"other_emails\": []\n      }\n    ],\n    \"labels\": [\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\"\
-  ,\n        \"updated_at\": \"2021-08-19T02:02:17Z\",\n        \"id\": 6,\n        \"name\": \"All Hosts\",\n \
-  \       \"description\": \"All hosts which have enrolled in Fleet\",\n        \"query\": \"SELECT 1;\",\n    \
-  \    \"platform\": \"\",\n        \"label_type\": \"builtin\",\n        \"label_membership_type\": \"dynamic\"\
-  \n      },\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\"\
-  ,\n        \"id\": 14,\n        \"name\": \"Android\",\n        \"description\": \"All Android hosts\",\n    \
-  \    \"query\": \"\",\n        \"platform\": \"android\",\n        \"label_type\": \"builtin\",\n        \"label_membership_type\"\
-  : \"manual\"\n      }\n    ],\n    \"packs\": [],\n    \"policies\": [],\n    \"software\": [\n      {\n     \
-  \   \"id\": 411,\n        \"name\": \"Gmail\",\n        \"version\": \"2026.05.04.123456789\",\n        \"source\"\
-  : \"android_apps\",\n        \"application_id\": \"com.google.android.gm\",\n        \"generated_cpe\": \"\",\n\
-  \        \"vulnerabilities\": null,\n        \"installed_paths\": []\n      },\n      {\n        \"id\": 412,\n\
-  \        \"name\": \"Slack\",\n        \"version\": \"26.05.10.0\",\n        \"source\": \"android_apps\",\n \
-  \       \"application_id\": \"com.Slack\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\": null,\n\
-  \        \"installed_paths\": []\n      }\n    ],\n    \"mdm\": {\n      \"encryption_key_available\": false,\n\
-  \      \"enrollment_status\": \"On (automatic)\",\n      \"is_personal_enrollment\": false,\n      \"name\": \"\
-  Fleet\",\n      \"connected_to_fleet\": true,\n      \"server_url\": \"https://acme.com\",\n      \"device_status\"\
-  : \"unlocked\",\n      \"pending_action\": \"\",\n      \"os_settings\": {\n        \"disk_encryption\": {\n \
-  \         \"status\": null,\n          \"detail\": \"\"\n        }\n      },\n      \"profiles\": [\n        {\n\
-  \          \"profile_uuid\": \"g954ec5ea-a334-4825-87b3-937e7e381f24\",\n          \"name\": \"Android Wi-Fi Profile\"\
-  ,\n          \"status\": \"verified\",\n          \"operation_type\": \"install\",\n          \"scope\": null,\n\
-  \          \"managed_local_account\": null,\n          \"detail\": \"\"\n        }\n      ]\n    }\n  }\n}\n```\n\
-  \n`mdm.os_settings.host_name` reports the host name template enforcement status for a macOS, iOS, or iPadOS host.\
-  \ Its `status` is one of `pending`, `verifying`, `verified`, or `failed`, and `detail` carries the error message\
-  \ when the status is `failed`. The object is omitted entirely for hosts that aren't enforced (no template set\
-  \ on the host's fleet or on \"Unassigned\", non-MDM hosts, and personal (BYOD) enrollments).\n\n`mdm.os_settings.disk_encryption.action_required`\
-  \ names what the **end user** can do about a disk encryption problem, and is only present when there is something\
-  \ they can do. On Windows it is `create_pin` when BitLocker policy requires a startup PIN the end user hasn't\
-  \ set, and `restart` when Fleet is waiting for a pending restart before turning protection back on. On macOS it\
-  \ is `log_out` or `rotate_key`. It's absent when `status` is `action_required` for a reason the end user can't\
-  \ fix, such as a TPM that isn't ready or a policy that forbids the key protector Fleet needs.\n\n`mdm.bootstrap_token_escrowed`\
-  \ indicates whether Fleet has escrowed a [bootstrap token](https://support.apple.com/guide/deployment/use-secure-and-bootstrap-tokens-dep24dbdcf9e/web)\
+  : \"Anna Chao's Google Pixel 9\",\n    \"issues\": {\n      \"failing_policies_count\": 0,\n      \"failing_unhidden_policies_count\"\
+  : 0, // Available in Fleet Premium\n      \"hidden_policies_count\": 0, // Available in Fleet Premium\n      \"\
+  critical_vulnerabilities_count\": 0, // Available in Fleet Premium\n      \"total_issues_count\": 0\n    },\n\
+  \    \"batteries\": [],\n    \"end_users\": [\n      {\n        \"idp_info_updated_at\": \"2025-03-20T02:02:17Z\"\
+  ,\n        \"idp_id\": \"f26f8649-1e25-42c5-be71-1b1e6de56d3d\",\n        \"idp_username\": \"anna@example.com\"\
+  ,\n        \"idp_full_name\": \"Anna Chao\",\n        \"idp_department\": \"Product\",\n        \"idp_groups\"\
+  : [\n          \"Product\",\n          \"Designers\"\n        ],\n        \"other_emails\": []\n      }\n    ],\n\
+  \    \"labels\": [\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\"\
+  ,\n        \"id\": 6,\n        \"name\": \"All Hosts\",\n        \"description\": \"All hosts which have enrolled\
+  \ in Fleet\",\n        \"query\": \"SELECT 1;\",\n        \"platform\": \"\",\n        \"label_type\": \"builtin\"\
+  ,\n        \"label_membership_type\": \"dynamic\"\n      },\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\"\
+  ,\n        \"updated_at\": \"2021-08-19T02:02:17Z\",\n        \"id\": 14,\n        \"name\": \"Android\",\n  \
+  \      \"description\": \"All Android hosts\",\n        \"query\": \"\",\n        \"platform\": \"android\",\n\
+  \        \"label_type\": \"builtin\",\n        \"label_membership_type\": \"manual\"\n      }\n    ],\n    \"\
+  packs\": [],\n    \"policies\": [],\n    \"software\": [\n      {\n        \"id\": 411,\n        \"name\": \"\
+  Gmail\",\n        \"version\": \"2026.05.04.123456789\",\n        \"source\": \"android_apps\",\n        \"ai_tool\"\
+  : false,\n        \"application_id\": \"com.google.android.gm\",\n        \"generated_cpe\": \"\",\n        \"\
+  vulnerabilities\": null,\n        \"installed_paths\": []\n      },\n      {\n        \"id\": 412,\n        \"\
+  name\": \"Slack\",\n        \"version\": \"26.05.10.0\",\n        \"source\": \"android_apps\",\n        \"ai_tool\"\
+  : false,\n        \"application_id\": \"com.Slack\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\"\
+  : null,\n        \"installed_paths\": []\n      }\n    ],\n    \"mdm\": {\n      \"encryption_key_available\"\
+  : false,\n      \"enrollment_status\": \"On (automatic)\",\n      \"is_personal_enrollment\": false,\n      \"\
+  name\": \"Fleet\",\n      \"connected_to_fleet\": true,\n      \"server_url\": \"https://acme.com\",\n      \"\
+  device_status\": \"unlocked\",\n      \"pending_action\": \"\",\n      \"os_settings\": {\n        \"disk_encryption\"\
+  : {\n          \"status\": null,\n          \"detail\": \"\"\n        }\n      },\n      \"profiles\": [\n   \
+  \     {\n          \"profile_uuid\": \"g954ec5ea-a334-4825-87b3-937e7e381f24\",\n          \"name\": \"Android\
+  \ Wi-Fi Profile\",\n          \"status\": \"verified\",\n          \"operation_type\": \"install\",\n        \
+  \  \"scope\": null,\n          \"managed_local_account\": null,\n          \"detail\": \"\"\n        }\n     \
+  \ ]\n    }\n  }\n}\n```\n\n`mdm.os_settings.host_name` reports the host name template enforcement status for a\
+  \ macOS, iOS, or iPadOS host. Its `status` is one of `pending`, `verifying`, `verified`, or `failed`, and `detail`\
+  \ carries the error message when the status is `failed`. The object is omitted entirely for hosts that aren't\
+  \ enforced (no template set on the host's fleet or on \"Unassigned\", non-MDM hosts, and personal (BYOD) enrollments).\n\
+  \n`mdm.os_settings.disk_encryption.action_required` names what the **end user** can do about a disk encryption\
+  \ problem, and is only present when there is something they can do. On Windows it is `create_pin` when BitLocker\
+  \ policy requires a startup PIN the end user hasn't set, and `restart` when Fleet is waiting for a pending restart\
+  \ before turning protection back on. On macOS it is `log_out` or `rotate_key`. It's absent when `status` is `action_required`\
+  \ for a reason the end user can't fix, such as a TPM that isn't ready or a policy that forbids the key protector\
+  \ Fleet needs.\n\n`mdm.bootstrap_token_escrowed` indicates whether Fleet has escrowed a [bootstrap token](https://support.apple.com/guide/deployment/use-secure-and-bootstrap-tokens-dep24dbdcf9e/web)\
   \ for the macOS host. The bootstrap token authorizes certain MDM operations, such as remote wipe and installing\
   \ OS updates, without requiring a user with a secure token to be logged in. This field is only present for macOS\
   \ hosts.\n\nEntries in `mdm.profiles` that represent an Android certificate carry a `certificate_template_id`,\
@@ -288,8 +303,11 @@ docs: "Returns the information of the specified host.\n\n`GET /api/v1/fleet/host
   \ omitted when `operation_type` is `remove`, since removals are never retried.\n\n`browser` and `extension_for`\
   \ fields are included when set and when empty. `extension_for` shows the browser or Visual Studio Code fork associated\
   \ with the extension, allowing for differentiation between e.g. an extension installed on Visual Studio Code and\
-  \ one installed on Cursor. `browser` is deprecated, and only shows this information for browser plugins.\n\n`release`\
-  \ is included when set. For `rpm_packages`, it's the package release (for example, `1.212.el6`). For `go_binaries`,\
+  \ one installed on Cursor. `browser` is deprecated, and only shows this information for browser plugins.\n\n`issues.failing_policies_count`\
+  \ counts all failing policies, including those marked `hidden`. `issues.failing_unhidden_policies_count` (_Available\
+  \ in Fleet Premium_) counts only failing policies that aren't hidden. `issues.hidden_policies_count` (_Available\
+  \ in Fleet Premium_) counts all policies marked `hidden`, whether they're passing or failing.\n\n`release` is\
+  \ included when set. For `rpm_packages`, it's the package release (for example, `1.212.el6`). For `go_binaries`,\
   \ it's the version of the Go toolchain the binary was built with (for example, `go1.26.1`). Fleet uses it to detect\
   \ Go standard library vulnerabilities, so the same binary version built with two toolchains is listed as two versions.\
   \ `generated_cpe` is empty for Go binaries. Their vulnerabilities come from the [Go vulnerability database](https://vuln.go.dev)\
@@ -341,13 +359,19 @@ docs: "Returns the information of the specified host.\n\n`GET /api/v1/fleet/host
   \ this agent is version <=1.23.0 which is not collecting the scripts enabled info\n\n> Note: [Get human-device\
   \ mapping](https://github.com/fleetdm/fleet/blob/62dc32454f6a40e81fe229abdfc370d3bf7a56c6/docs/REST%20API/rest-api.md?plain=1#L3518)\
   \ is deprecated as of Fleet 4.67.0. It is maintained for backwards compatibility. Please use the [Get host](#get-host)\
-  \ endpoint to get human-device mapping.\n\n> Note: `mdm.is_personal_enrollment` reports whether the last MDM enrollment\
-  \ Fleet recorded for the host was personal (BYOD). Unlike `mdm.enrollment_status`, it is not cleared when the\
-  \ host unenrolls, so it stays `true` for an unenrolled Android or Apple mobile host. On macOS and Windows, MDM\
-  \ state is re-reported by the agent, which resets the field once the enrollment profile is gone.\n\n> Note: For\
-  \ iOS, iPadOS, and Android hosts with ⁠`mdm.enrollment_status` set to \"On (personal)\", ⁠`hardware_serial` and\
-  \ ⁠`uuid` represent a temporary enrollment ID. For Android work profile, this is what Google calls an [enterprise-specific\
-  \ ID](https://developer.android.com/work/versions/android-12#:~:text=An%20enrollment%2Dspecific%20ID%20provides%20a%20unique%20ID%20that%20identifies%20the%20work%20profile%20enrollment%20in%20a%20particular%20organization%2C%20and%20will%20remain%20stable%20across%20factory%20resets).\n\
+  \ endpoint to get human-device mapping.\n\n> Note: `mdm.enrollment_status` is one of the following:\n> - `\"On\
+  \ (automatic)\"`: enrolled via Apple's automatic enrollment (ADE), Windows Autopilot, or as a fully managed Android\
+  \ device.\n> - `\"On (manual)\"`: enrolled with a manual enrollment profile as a company-owned device.\n> - `\"\
+  On (personal)\"`: enrolled with a Managed Apple Account (Account-driven User Enrollment) or an Android work profile\
+  \ as a personal (BYOD) device.\n> - `\"On (manual - personal)\"`: enrolled with a manual enrollment profile as\
+  \ a personal (BYOD) device.\n> - `\"Pending\"`: in Apple Business (AB) or Windows Autopilot, but not yet enrolled\
+  \ to Fleet.\n> - `\"Off\"`: not enrolled.\n> - `null`: Fleet has no MDM information for this host.\n\n> Note:\
+  \ `mdm.is_personal_enrollment` reports whether the last MDM enrollment Fleet recorded for the host was personal\
+  \ (BYOD). Unlike `mdm.enrollment_status`, it is not cleared when the host unenrolls, so it stays `true` for an\
+  \ unenrolled Android or Apple mobile host. On macOS and Windows, MDM state is re-reported by the agent, which\
+  \ resets the field once the enrollment profile is gone.\n\n> Note: For iOS, iPadOS, and Android hosts with ⁠`mdm.enrollment_status`\
+  \ set to \"On (personal)\", ⁠`hardware_serial` and ⁠`uuid` represent a temporary enrollment ID. For Android work\
+  \ profile, this is what Google calls an [enterprise-specific ID](https://developer.android.com/work/versions/android-12#:~:text=An%20enrollment%2Dspecific%20ID%20provides%20a%20unique%20ID%20that%20identifies%20the%20work%20profile%20enrollment%20in%20a%20particular%20organization%2C%20and%20will%20remain%20stable%20across%20factory%20resets).\n\
   \nReference: https://fleetdm.com/docs/rest-api/rest-api#get-host"
 examples:
 - name: 200 Default response
@@ -439,6 +463,8 @@ examples:
             "additional": {},
             "issues": {
               "failing_policies_count": 1,
+              "failing_unhidden_policies_count": 1,
+              "hidden_policies_count": 0,
               "critical_vulnerabilities_count": 2,
               "total_issues_count": 3
             },
@@ -576,6 +602,7 @@ examples:
                 "name": "macOSApp",
                 "version": "1.0",
                 "source": "apps",
+                "ai_tool": false,
                 "bundle_identifier": "com.some.app",
                 "last_opened_at": "2021-08-18T21:14:00Z",
                 "generated_cpe": "",
@@ -589,6 +616,7 @@ examples:
                 "name": "Windows",
                 "version": "1.0",
                 "source": "programs",
+                "ai_tool": false,
                 "upgrade_code": "{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}",
                 "last_opened_at": "2021-08-18T21:14:00Z",
                 "generated_cpe": "",
@@ -657,7 +685,31 @@ examples:
                   "operation_type": "install",
                   "scope": "device",
                   "managed_local_account": "",
-                  "detail": ""
+                  "detail": "",
+                  "self_service": true,
+                  "hidden": false
+                },
+                {
+                  "profile_uuid": "954ec5ea-a334-4825-87b3-937e7e381234",
+                  "name": "profile2",
+                  "status": "verifying",
+                  "operation_type": "install",
+                  "scope": "device",
+                  "managed_local_account": "",
+                  "detail": "",
+                  "self_service": false,
+                  "hidden": true
+                },
+                {
+                  "profile_uuid": "954ec5ea-a334-4825-87b3-937e7e385678",
+                  "name": "profile3",
+                  "status": null,
+                  "operation_type": "",
+                  "scope": "device",
+                  "managed_local_account": "",
+                  "detail": "",
+                  "self_service": true,
+                  "hidden": false
                 }
               ]
             }
@@ -825,6 +877,8 @@ examples:
             "additional": {},
             "issues": {
               "failing_policies_count": 1,
+              "failing_unhidden_policies_count": 1,
+              "hidden_policies_count": 0,
               "critical_vulnerabilities_count": 2,
               "total_issues_count": 3
             },
@@ -955,6 +1009,7 @@ examples:
                 "name": "Gmail",
                 "version": "6.0.240414",
                 "source": "ios_apps",
+                "ai_tool": false,
                 "bundle_identifier": "com.google.Gmail",
                 "last_opened_at": "2021-08-18T21:14:00Z",
                 "generated_cpe": "",
@@ -968,6 +1023,7 @@ examples:
                 "name": "Slack",
                 "version": "23.10.10",
                 "source": "ios_apps",
+                "ai_tool": false,
                 "bundle_identifier": "com.tinyspeck.chatlyio",
                 "last_opened_at": "2021-08-18T21:14:00Z",
                 "generated_cpe": "",
@@ -1141,6 +1197,8 @@ examples:
             "display_text": "Anna Chao's Google Pixel 9",
             "issues": {
               "failing_policies_count": 0,
+              "failing_unhidden_policies_count": 0,
+              "hidden_policies_count": 0,
               "critical_vulnerabilities_count": 0,
               "total_issues_count": 0
             },
@@ -1191,6 +1249,7 @@ examples:
                 "name": "Gmail",
                 "version": "2026.05.04.123456789",
                 "source": "android_apps",
+                "ai_tool": false,
                 "application_id": "com.google.android.gm",
                 "generated_cpe": "",
                 "vulnerabilities": null,
@@ -1201,6 +1260,7 @@ examples:
                 "name": "Slack",
                 "version": "26.05.10.0",
                 "source": "android_apps",
+                "ai_tool": false,
                 "application_id": "com.Slack",
                 "generated_cpe": "",
                 "vulnerabilities": null,

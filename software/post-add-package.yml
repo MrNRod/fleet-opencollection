@@ -1,7 +1,7 @@
 info:
   name: Add package
   type: http
-  seq: 7
+  seq: 8
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/software/package'
@@ -11,10 +11,21 @@ http:
     data:
     - name: software
       value: []
-      description: '**Required**. Installer package file or custom script file. Supported packages are `.pkg`, `.msi`,
-        `.exe`, `.deb`, `.rpm`, `.tar.gz`, `.ipa`, `.sh`, `.py`, and `.ps1`.'
-      disabled: false
+      description: Installer package file or custom script file. Required unless `upload_id` is specified. Supported
+        packages are `.pkg`, `.msi`, `.exe`, `.deb`, `.rpm`, `.tar.gz`, `.ipa`, `.sh`, `.py`, and `.ps1`.
+      disabled: true
       type: file
+    - name: upload_id
+      value: ''
+      description: The `upload_id` from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload).
+        Use instead of `software` for a package uploaded directly to GCS.
+      disabled: true
+      type: text
+    - name: filename
+      value: ''
+      description: The package's file name, including its extension. Required with `upload_id`.
+      disabled: true
+      type: text
     - name: fleet_id
       value: ''
       description: The fleet ID. Adds a software package to the specified fleet. If not specified, it will add the
@@ -88,7 +99,9 @@ docs: |-
 
   | Name            | Type    | In   | Description                                      |
   | ----            | ------- | ---- | --------------------------------------------     |
-  | software        | file    | body | **Required**. Installer package file or custom script file. Supported packages are `.pkg`, `.msi`, `.exe`, `.deb`, `.rpm`, `.tar.gz`, `.ipa`, `.sh`, `.py`, and `.ps1`. |
+  | software        | file    | body | Installer package file or custom script file. Required unless `upload_id` is specified. Supported packages are `.pkg`, `.msi`, `.exe`, `.deb`, `.rpm`, `.tar.gz`, `.ipa`, `.sh`, `.py`, and `.ps1`. |
+  | upload_id       | string  | body | The `upload_id` from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload). Use instead of `software` for a package uploaded directly to GCS. |
+  | filename        | string  | body | The package's file name, including its extension. Required with `upload_id`. |
   | fleet_id         | integer | body | The fleet ID. Adds a software package to the specified fleet. If not specified, it will add the software for "Unassigned" hosts. |
   | install_script  | string | body | Script that Fleet runs to install software. If not specified Fleet runs the [default install script](https://github.com/fleetdm/fleet/tree/main/pkg/file/scripts) for each package type if one exists. Required for `.tar.gz` and `.exe` (no default script). Not supported for `.sh`, `.py`, and `.ps1`. |
   | uninstall_script  | string | body | Script that Fleet runs to uninstall software. If not specified Fleet runs the [default uninstall script](https://github.com/fleetdm/fleet/tree/main/pkg/file/scripts) for each package type if one exists. Required for `.tar.gz` and `.exe` (no default script). |
@@ -169,10 +182,21 @@ examples:
       data:
       - name: software
         value: []
-        description: '**Required**. Installer package file or custom script file. Supported packages are `.pkg`,
-          `.msi`, `.exe`, `.deb`, `.rpm`, `.tar.gz`, `.ipa`, `.sh`, `.py`, and `.ps1`.'
-        disabled: false
+        description: Installer package file or custom script file. Required unless `upload_id` is specified. Supported
+          packages are `.pkg`, `.msi`, `.exe`, `.deb`, `.rpm`, `.tar.gz`, `.ipa`, `.sh`, `.py`, and `.ps1`.
+        disabled: true
         type: file
+      - name: upload_id
+        value: ''
+        description: The `upload_id` from [Create staged upload](https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload).
+          Use instead of `software` for a package uploaded directly to GCS.
+        disabled: true
+        type: text
+      - name: filename
+        value: ''
+        description: The package's file name, including its extension. Required with `upload_id`.
+        disabled: true
+        type: text
       - name: fleet_id
         value: ''
         description: The fleet ID. Adds a software package to the specified fleet. If not specified, it will add

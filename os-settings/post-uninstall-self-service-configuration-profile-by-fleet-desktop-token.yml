@@ -1,0 +1,58 @@
+info:
+  name: Uninstall self-service configuration profile by Fleet Desktop token
+  type: http
+  seq: 16
+http:
+  method: POST
+  url: '{{baseUrl}}/api/v1/fleet/device/:token/configuration_profiles/:profile_uuid/uninstall'
+  params:
+  - name: token
+    value: ''
+    type: path
+    description: '**Required.** The host''s [Fleet Desktop token](https://fleetdm.com/guides/fleet-desktop#secure-fleet-desktop).'
+  - name: profile_uuid
+    value: ''
+    type: path
+    description: '**Required.** The UUID of the self-service configuration profile to uninstall.'
+docs: |-
+  _Available in Fleet Premium._
+
+  Removes a self-service (opt-in) configuration profile from the host. Fleet queues the removal and delivers it on the next profile run. The profile stays available to install again.
+
+  `POST /api/v1/fleet/device/:token/configuration_profiles/:profile_uuid/uninstall`
+
+  #### Parameters
+
+  | Name | Type | In | Description |
+  | ---- | ---- | -- | ----------- |
+  | token   | string | path | **Required.** The host's [Fleet Desktop token](https://fleetdm.com/guides/fleet-desktop#secure-fleet-desktop). |
+  | profile_uuid   | string | path | **Required.** The UUID of the self-service configuration profile to uninstall. |
+
+  #### Example
+
+  `POST /api/v1/fleet/device/abcdef012456789/configuration_profiles/fc14a20-84a2-42d8-9257-a425f62bb54d/uninstall`
+
+  ##### Default response
+
+  `Status: 202`
+
+  If the profile isn't self-service, the response is `Status: 400`. If the host hasn't installed the profile, the response is `Status: 404`.
+
+  Reference: https://fleetdm.com/docs/rest-api/rest-api#uninstall-self-service-configuration-profile-by-fleet-desktop-token
+examples:
+- name: 202 Default response
+  request:
+    method: POST
+    url: '{{baseUrl}}/api/v1/fleet/device/:token/configuration_profiles/:profile_uuid/uninstall'
+    params:
+    - name: token
+      value: ''
+      type: path
+      description: '**Required.** The host''s [Fleet Desktop token](https://fleetdm.com/guides/fleet-desktop#secure-fleet-desktop).'
+    - name: profile_uuid
+      value: ''
+      type: path
+      description: '**Required.** The UUID of the self-service configuration profile to uninstall.'
+  response:
+    status: 202
+    statusText: Accepted

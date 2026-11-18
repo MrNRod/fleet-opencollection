@@ -1,7 +1,7 @@
 info:
   name: Get host's disk encryption key
   type: http
-  seq: 24
+  seq: 26
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/encryption_key'
@@ -45,10 +45,13 @@ docs: |-
     "host_id": 8,
     "encryption_key": {
       "key": "5ADZ-HTZ8-LJJ4-B2F8-JWH3-YPBT",
-      "updated_at": "2022-12-01T05:31:43Z"
+      "updated_at": "2022-12-01T05:31:43Z",
+      "rotation_pending": false
     }
   }
   ```
+
+  `rotation_pending` is `true` while a [rotation request](#rotate-hosts-disk-encryption-key) is waiting for the host to acknowledge it. `key` is the current key until the host acknowledges the rotation.
 
   Reference: https://fleetdm.com/docs/rest-api/rest-api#get-hosts-disk-encryption-key
 examples:
@@ -77,7 +80,8 @@ examples:
           "host_id": 8,
           "encryption_key": {
             "key": "5ADZ-HTZ8-LJJ4-B2F8-JWH3-YPBT",
-            "updated_at": "2022-12-01T05:31:43Z"
+            "updated_at": "2022-12-01T05:31:43Z",
+            "rotation_pending": false
           }
         }
     headers:

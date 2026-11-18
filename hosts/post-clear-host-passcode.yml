@@ -1,7 +1,7 @@
 info:
   name: Clear host passcode
   type: http
-  seq: 41
+  seq: 44
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/clear_passcode'

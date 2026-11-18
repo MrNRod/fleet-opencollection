@@ -52,23 +52,24 @@ docs: "Returns the information of the host specified using the `hostname`, `uuid
   : \"02:42:ac:1b:00:06\",\n    \"distributed_interval\": 10,\n    \"config_tls_refresh\": 60,\n    \"logger_tls_period\"\
   : 10,\n    \"team_id\": 2,\n    \"fleet_id\": 2,\n    \"team_name\": null,\n    \"fleet_name\": null,\n    \"\
   gigs_disk_space_available\": 19.29,\n    \"percent_disk_space_available\": 74,\n    \"gigs_total_disk_space\"\
-  : 192,\n    \"issues\": {\n      \"failing_policies_count\": 1,\n      \"critical_vulnerabilities_count\": 2,\
-  \ // Fleet Premium only\n      \"total_issues_count\": 3\n    },\n    \"batteries\": [\n      {\n        \"cycle_count\"\
-  : 999,\n        \"health\": \"Normal\"\n      }\n    ],\n    \"geolocation\": {\n      \"country_iso\": \"US\"\
-  ,\n      \"city_name\": \"New York\",\n      \"geometry\": {\n        \"type\": \"point\",\n        \"coordinates\"\
-  : [40.6799, -74.0028]\n      }\n    },\n    \"pack_stats\": [\n      {\n        \"pack_id\": 1,\n        \"pack_name\"\
-  : \"Global\",\n        \"type\": \"global\",\n        \"query_stats\": [\n          {\n            \"scheduled_query_name\"\
-  : \"Get running processes (with user_name)\",\n            \"scheduled_query_id\": 49,\n            \"query_name\"\
-  : \"Get running processes (with user_name)\",\n            \"pack_name\": \"Global\",\n            \"pack_id\"\
-  : 1,\n            \"average_memory\": 260000,\n            \"denylisted\": false,\n            \"executions\"\
-  : 1,\n            \"interval\": 86400,\n            \"last_executed\": \"2022-10-14T10:00:01Z\",\n           \
-  \ \"output_size\": 198,\n            \"system_time\": 20,\n            \"user_time\": 80,\n            \"wall_time\"\
-  : 0\n          }\n        ]\n      }\n    ],\n    \"labels\": [\n      {\n        \"created_at\": \"2021-09-14T05:11:02Z\"\
-  ,\n        \"updated_at\": \"2021-09-14T05:11:02Z\",\n        \"id\": 12,\n        \"name\": \"All Linux\",\n\
-  \        \"description\": \"All Linux distributions\",\n        \"query\": \"SELECT 1 FROM osquery_info WHERE\
-  \ build_platform LIKE '%ubuntu%' OR build_distro LIKE '%centos%';\",\n        \"platform\": \"\",\n        \"\
-  label_type\": \"builtin\",\n        \"label_membership_type\": \"dynamic\"\n      }\n    ],\n    \"packs\": [\n\
-  \      {\n        \"created_at\": \"2021-09-17T05:28:54Z\",\n        \"updated_at\": \"2021-09-17T05:28:54Z\"\
+  : 192,\n    \"issues\": {\n      \"failing_policies_count\": 1,\n      \"failing_unhidden_policies_count\": 1,\
+  \ // Fleet Premium only\n      \"hidden_policies_count\": 0, // Fleet Premium only\n      \"critical_vulnerabilities_count\"\
+  : 2, // Fleet Premium only\n      \"total_issues_count\": 3\n    },\n    \"batteries\": [\n      {\n        \"\
+  cycle_count\": 999,\n        \"health\": \"Normal\"\n      }\n    ],\n    \"geolocation\": {\n      \"country_iso\"\
+  : \"US\",\n      \"city_name\": \"New York\",\n      \"geometry\": {\n        \"type\": \"point\",\n        \"\
+  coordinates\": [40.6799, -74.0028]\n      }\n    },\n    \"pack_stats\": [\n      {\n        \"pack_id\": 1,\n\
+  \        \"pack_name\": \"Global\",\n        \"type\": \"global\",\n        \"query_stats\": [\n          {\n\
+  \            \"scheduled_query_name\": \"Get running processes (with user_name)\",\n            \"scheduled_query_id\"\
+  : 49,\n            \"query_name\": \"Get running processes (with user_name)\",\n            \"pack_name\": \"\
+  Global\",\n            \"pack_id\": 1,\n            \"average_memory\": 260000,\n            \"denylisted\": false,\n\
+  \            \"executions\": 1,\n            \"interval\": 86400,\n            \"last_executed\": \"2022-10-14T10:00:01Z\"\
+  ,\n            \"output_size\": 198,\n            \"system_time\": 20,\n            \"user_time\": 80,\n     \
+  \       \"wall_time\": 0\n          }\n        ]\n      }\n    ],\n    \"labels\": [\n      {\n        \"created_at\"\
+  : \"2021-09-14T05:11:02Z\",\n        \"updated_at\": \"2021-09-14T05:11:02Z\",\n        \"id\": 12,\n        \"\
+  name\": \"All Linux\",\n        \"description\": \"All Linux distributions\",\n        \"query\": \"SELECT 1 FROM\
+  \ osquery_info WHERE build_platform LIKE '%ubuntu%' OR build_distro LIKE '%centos%';\",\n        \"platform\"\
+  : \"\",\n        \"label_type\": \"builtin\",\n        \"label_membership_type\": \"dynamic\"\n      }\n    ],\n\
+  \    \"packs\": [\n      {\n        \"created_at\": \"2021-09-17T05:28:54Z\",\n        \"updated_at\": \"2021-09-17T05:28:54Z\"\
   ,\n        \"id\": 1,\n        \"name\": \"Global\",\n        \"description\": \"Global pack\",\n        \"disabled\"\
   : false,\n        \"type\": \"global\",\n        \"labels\": null,\n        \"label_ids\": null,\n        \"hosts\"\
   : null,\n        \"host_ids\": null,\n        \"teams\": null,\n        \"fleet\": null,\n        \"team_ids\"\
@@ -82,43 +83,44 @@ docs: "Returns the information of the host specified using the `hostname`, `uuid
   created_at\": \"2022-09-02T18:52:19Z\",\n        \"updated_at\": \"2022-09-02T18:52:19Z\",\n        \"response\"\
   : \"fail\",\n        \"critical\": false\n      }\n    ],\n    \"software\": [\n      {\n        \"id\": 16923,\n\
   \        \"name\": \"Automat\",\n        \"version\": \"0.8.0\",\n        \"source\": \"python_packages\",\n \
-  \       \"browser\": \"\",\n        \"extension_for\": \"\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\"\
-  : null,\n        \"installed_paths\": [\"/usr/lib/some_path/\"]\n      }\n    ],\n    \"mdm\": {\n      \"encryption_key_available\"\
-  : false,\n      \"enrollment_status\": null,\n      \"is_personal_enrollment\": false,\n      \"name\": \"\",\n\
-  \      \"server_url\": null,\n      \"device_status\": \"unlocked\",\n      \"pending_action\": \"lock\",\n  \
-  \    \"macos_settings\": {\n        \"disk_encryption\": null,\n        \"action_required\": null\n      },\n\
-  \      \"apple_settings\": {\n        \"disk_encryption\": null,\n        \"action_required\": null\n      },\n\
-  \      \"macos_setup\": {\n        \"bootstrap_package_status\": \"installed\",\n        \"detail\": \"\"\n  \
-  \    },\n      \"setup_experience\": {\n        \"bootstrap_package_status\": \"installed\",\n        \"detail\"\
-  : \"\"\n      },\n      \"os_settings\": {\n        \"disk_encryption\": {\n          \"status\": null,\n    \
-  \      \"detail\": \"\",\n          \"action_required\": null\n        }\n      },\n      \"profiles\": [\n  \
-  \      {\n          \"profile_uuid\": \"954ec5ea-a334-4825-87b3-937e7e381f24\",\n          \"name\": \"profile1\"\
-  ,\n          \"status\": \"verifying\",\n          \"operation_type\": \"install\",\n          \"scope\": \"device\"\
-  ,\n          \"managed_local_account\": \"\",\n          \"detail\": \"\"\n        }\n      ]\n    }\n  }\n}\n\
-  ```\n#### Example (iOS/iPadOS)\n\n`GET /api/v1/fleet/hosts/identifier/392547dc-0000-0000-a87a-d701ff75bc65`\n\n\
-  ##### Default response\n\n`Status: 200`\n\n```json\n{\n  \"host\": {\n    \"created_at\": \"2022-02-10T02:29:13Z\"\
+  \       \"ai_tool\": false,\n        \"browser\": \"\",\n        \"extension_for\": \"\",\n        \"generated_cpe\"\
+  : \"\",\n        \"vulnerabilities\": null,\n        \"installed_paths\": [\"/usr/lib/some_path/\"]\n      }\n\
+  \    ],\n    \"mdm\": {\n      \"encryption_key_available\": false,\n      \"enrollment_status\": null,\n    \
+  \  \"is_personal_enrollment\": false,\n      \"name\": \"\",\n      \"server_url\": null,\n      \"device_status\"\
+  : \"unlocked\",\n      \"pending_action\": \"lock\",\n      \"macos_settings\": {\n        \"disk_encryption\"\
+  : null,\n        \"action_required\": null\n      },\n      \"apple_settings\": {\n        \"disk_encryption\"\
+  : null,\n        \"action_required\": null\n      },\n      \"macos_setup\": {\n        \"bootstrap_package_status\"\
+  : \"installed\",\n        \"detail\": \"\"\n      },\n      \"setup_experience\": {\n        \"bootstrap_package_status\"\
+  : \"installed\",\n        \"detail\": \"\"\n      },\n      \"os_settings\": {\n        \"disk_encryption\": {\n\
+  \          \"status\": null,\n          \"detail\": \"\",\n          \"action_required\": null\n        }\n  \
+  \    },\n      \"profiles\": [\n        {\n          \"profile_uuid\": \"954ec5ea-a334-4825-87b3-937e7e381f24\"\
+  ,\n          \"name\": \"profile1\",\n          \"status\": \"verifying\",\n          \"operation_type\": \"install\"\
+  ,\n          \"scope\": \"device\",\n          \"managed_local_account\": \"\",\n          \"detail\": \"\",\n\
+  \          \"self_service\": true\n        }\n      ]\n    }\n  }\n}\n```\n#### Example (iOS/iPadOS)\n\n`GET /api/v1/fleet/hosts/identifier/392547dc-0000-0000-a87a-d701ff75bc65`\n\
+  \n##### Default response\n\n`Status: 200`\n\n```json\n{\n  \"host\": {\n    \"created_at\": \"2022-02-10T02:29:13Z\"\
   ,\n    \"updated_at\": \"2022-10-14T17:07:11Z\",\n    \"id\": 33,\n    \"detail_updated_at\": \"2022-10-14T17:07:12Z\"\
   ,\n    \"label_updated_at\": \"2022-10-14T17:07:12Z\",\n    \"policy_updated_at\": \"2022-10-14T17:07:12Z\",\n\
   \    \"last_enrolled_at\": \"2022-02-10T02:29:13Z\",\n    \"last_mdm_checked_in_at\": \"2023-02-26T22:33:12Z\"\
   ,\n    \"last_mdm_enrolled_at\": \"2023-02-26T22:33:12Z\",\n    \"mdm_enrollment_hardware_attested\": true,\n\
   \    \"software_updated_at\": \"2020-11-05T05:09:44Z\",\n    \"seen_time\": \"2022-10-14T17:45:41Z\",\n    \"\
   refetch_requested\": false,\n    \"hostname\": \"Johns-iPhone\",\n    \"uuid\": \"392547dc-0000-0000-a87a-d701ff75bc65\"\
-  ,\n    \"platform\": \"ios\",\n    \"osquery_version\": \"5.5.1\",\n    \"os_version\": \"iOS 17.4.1\",\n    \"\
-  build\": \"21E236\",\n    \"platform_like\": \"darwin\",\n    \"code_name\": \"\",\n    \"uptime\": 20807520000000000,\n\
-  \    \"memory\": 6442450944,\n    \"cpu_type\": \"arm64\",\n    \"cpu_subtype\": \"ARM64E\",\n    \"cpu_brand\"\
-  : \"Apple A16 Bionic\",\n    \"cpu_physical_cores\": 6,\n    \"cpu_logical_cores\": 6,\n    \"hardware_vendor\"\
-  : \"Apple Inc.\",\n    \"hardware_model\": \"iPhone15,2\",\n    \"hardware_version\": \"iPhone 15 Pro\",\n   \
-  \ \"hardware_serial\": \"F2LXX1XXXXXX\",\n    \"computer_name\": \"John's iPhone\",\n    \"timezone\": null,\n\
-  \    \"public_ip\": \"\",\n    \"primary_ip\": \"192.168.1.42\",\n    \"primary_mac\": \"a4:83:e7:12:34:56\",\n\
-  \    \"distributed_interval\": 10,\n    \"config_tls_refresh\": 60,\n    \"logger_tls_period\": 10,\n    \"team_id\"\
-  : 2,\n    \"fleet_id\": 2,\n    \"team_name\": null,\n    \"fleet_name\": null,\n    \"gigs_disk_space_available\"\
-  : 54.3,\n    \"percent_disk_space_available\": 43,\n    \"gigs_total_disk_space\": 128,\n    \"app_analytics_enabled\"\
-  : true,\n    \"accessibility_settings\": {\n      \"bold_text_enabled\": false,\n      \"grayscale_enabled\":\
-  \ false,\n      \"increase_contrast_enabled\": false,\n      \"reduce_motion_enabled\": true,\n      \"reduce_transparency_enabled\"\
-  : false,\n      \"text_size\": 4,\n      \"touch_accommodations_enabled\": false,\n      \"voice_over_enabled\"\
-  : false,\n      \"zoom_enabled\": false\n    },\n    \"awaiting_configuration\": false,\n    \"battery_level\"\
-  : 0.82,\n    \"bluetooth_mac\": \"a4:83:e7:12:34:57\",\n    \"cellular_technology\": \"GSM\",\n    \"data_roaming_enabled\"\
-  : false,\n    \"device_properties_attestation\": [\n      \"MIIC6zCCAnKgAwIBAgIGAZ+onLUpMAoGCCqGSM49BAMDMFIxLjAsBgNVBAMMJUFwcGxl\"\
+  ,\n    \"platform\": \"ios\",\n    \"google_device_id\": \"c3d1a9e2-7b4f-4e8a-9f1d-2a6b8c0e4f12\",\n    \"osquery_version\"\
+  : \"5.5.1\",\n    \"os_version\": \"iOS 17.4.1\",\n    \"build\": \"21E236\",\n    \"platform_like\": \"darwin\"\
+  ,\n    \"code_name\": \"\",\n    \"uptime\": 20807520000000000,\n    \"memory\": 6442450944,\n    \"cpu_type\"\
+  : \"arm64\",\n    \"cpu_subtype\": \"ARM64E\",\n    \"cpu_brand\": \"Apple A16 Bionic\",\n    \"cpu_physical_cores\"\
+  : 6,\n    \"cpu_logical_cores\": 6,\n    \"hardware_vendor\": \"Apple Inc.\",\n    \"hardware_model\": \"iPhone15,2\"\
+  ,\n    \"hardware_version\": \"iPhone 15 Pro\",\n    \"hardware_serial\": \"F2LXX1XXXXXX\",\n    \"computer_name\"\
+  : \"John's iPhone\",\n    \"timezone\": null,\n    \"public_ip\": \"\",\n    \"primary_ip\": \"192.168.1.42\"\
+  ,\n    \"primary_mac\": \"a4:83:e7:12:34:56\",\n    \"distributed_interval\": 10,\n    \"config_tls_refresh\"\
+  : 60,\n    \"logger_tls_period\": 10,\n    \"team_id\": 2,\n    \"fleet_id\": 2,\n    \"team_name\": null,\n \
+  \   \"fleet_name\": null,\n    \"gigs_disk_space_available\": 54.3,\n    \"percent_disk_space_available\": 43,\n\
+  \    \"gigs_total_disk_space\": 128,\n    \"app_analytics_enabled\": true,\n    \"accessibility_settings\": {\n\
+  \      \"bold_text_enabled\": false,\n      \"grayscale_enabled\": false,\n      \"increase_contrast_enabled\"\
+  : false,\n      \"reduce_motion_enabled\": true,\n      \"reduce_transparency_enabled\": false,\n      \"text_size\"\
+  : 4,\n      \"touch_accommodations_enabled\": false,\n      \"voice_over_enabled\": false,\n      \"zoom_enabled\"\
+  : false\n    },\n    \"awaiting_configuration\": false,\n    \"battery_level\": 0.82,\n    \"bluetooth_mac\":\
+  \ \"a4:83:e7:12:34:57\",\n    \"cellular_technology\": \"GSM\",\n    \"data_roaming_enabled\": false,\n    \"\
+  device_properties_attestation\": [\n      \"MIIC6zCCAnKgAwIBAgIGAZ+onLUpMAoGCCqGSM49BAMDMFIxLjAsBgNVBAMMJUFwcGxl\"\
   ,\n      \"MIICSTCCAc6gAwIBAgIUcDHgQKbmtGvw4vNNVWqEVNBCXnEwCgYIKoZIzj0EAwMwUTEt\"\n    ],\n    \"diagnostic_submission_enabled\"\
   : true,\n    \"eas_device_identifier\": \"3E2A1F9C4D7B6E8A2C5D1F0E3B4A7C9D\",\n    \"is_cloud_backup_enabled\"\
   : true,\n    \"is_device_locator_service_enabled\": true,\n    \"is_do_not_disturb_in_effect\": false,\n    \"\
@@ -139,48 +141,50 @@ docs: "Returns the information of the host specified using the `hostname`, `uuid
   \   \"phone_number\": \"+1-555-867-5309\",\n        \"slot\": \"CTSubscriptionSlotOne\",\n        \"subscriber_carrier_network\"\
   : \"Verizon\"\n      }\n    ],\n    \"supplemental_build_version\": \"21E236\",\n    \"supplemental_os_version_extra\"\
   : \"(a)\",\n    \"wifi_mac\": \"a4:83:e7:12:34:58\",\n    \"issues\": {\n      \"failing_policies_count\": 1,\n\
-  \      \"critical_vulnerabilities_count\": 2, // Fleet Premium only\n      \"total_issues_count\": 3\n    },\n\
-  \    \"batteries\": [\n      {\n        \"cycle_count\": 187,\n        \"health\": \"Normal\"\n      }\n    ],\n\
-  \    \"geolocation\": {\n      \"country_iso\": \"US\",\n      \"city_name\": \"New York\",\n      \"geometry\"\
-  : {\n        \"type\": \"point\",\n        \"coordinates\": [40.6799, -74.0028]\n      }\n    },\n    \"pack_stats\"\
-  : [\n      {\n        \"pack_id\": 1,\n        \"pack_name\": \"Global\",\n        \"type\": \"global\",\n   \
-  \     \"query_stats\": [\n          {\n            \"scheduled_query_name\": \"Get running processes (with user_name)\"\
-  ,\n            \"scheduled_query_id\": 49,\n            \"query_name\": \"Get running processes (with user_name)\"\
-  ,\n            \"pack_name\": \"Global\",\n            \"pack_id\": 1,\n            \"average_memory\": 260000,\n\
-  \            \"denylisted\": false,\n            \"executions\": 1,\n            \"interval\": 86400,\n      \
-  \      \"last_executed\": \"2022-10-14T10:00:01Z\",\n            \"output_size\": 198,\n            \"system_time\"\
-  : 20,\n            \"user_time\": 80,\n            \"wall_time\": 0\n          }\n        ]\n      }\n    ],\n\
-  \    \"labels\": [\n      {\n        \"created_at\": \"2021-09-14T05:11:02Z\",\n        \"updated_at\": \"2021-09-14T05:11:02Z\"\
-  ,\n        \"id\": 12,\n        \"name\": \"All iOS\",\n        \"description\": \"All iOS devices\",\n      \
-  \  \"query\": \"SELECT 1 FROM osquery_info WHERE build_platform = 'ios';\",\n        \"platform\": \"ios\",\n\
-  \        \"label_type\": \"builtin\",\n        \"label_membership_type\": \"dynamic\"\n      }\n    ],\n    \"\
-  packs\": [\n      {\n        \"created_at\": \"2021-09-17T05:28:54Z\",\n        \"updated_at\": \"2021-09-17T05:28:54Z\"\
-  ,\n        \"id\": 1,\n        \"name\": \"Global\",\n        \"description\": \"Global pack\",\n        \"disabled\"\
-  : false,\n        \"type\": \"global\",\n        \"labels\": null,\n        \"label_ids\": null,\n        \"hosts\"\
-  : null,\n        \"host_ids\": null,\n        \"teams\": null,\n        \"fleet\": null,\n        \"team_ids\"\
-  : null,\n        \"fleet_ids\": null\n      }\n    ],\n    \"policies\": [\n      {\n        \"id\": 142,\n  \
-  \      \"name\": \"Passcode required (iOS)\",\n        \"query\": \"SELECT 1 FROM managed_policies WHERE domain\
-  \ = 'com.apple.mobiledevice.passwordpolicy' AND name = 'forcePIN' AND value = 1 LIMIT 1;\",\n        \"description\"\
-  : \"Checks to make sure that a passcode is required on iOS devices.\",\n        \"author_id\": 31,\n        \"\
-  author_name\": \"\",\n        \"author_email\": \"\",\n        \"team_id\": null,\n        \"fleet_id\": null,\n\
-  \        \"resolution\": \"To enable a passcode, on the failing device, go to Settings > Face ID & Passcode >\
-  \ Turn Passcode On.\",\n        \"platform\": \"ios\",\n        \"created_at\": \"2022-09-02T18:52:19Z\",\n  \
-  \      \"updated_at\": \"2022-09-02T18:52:19Z\",\n        \"response\": \"fail\",\n        \"critical\": false\n\
-  \      }\n    ],\n    \"software\": [\n      {\n        \"id\": 16923,\n        \"name\": \"Gmail\",\n       \
-  \ \"version\": \"6.0.240414\",\n        \"source\": \"ios_apps\",\n        \"browser\": \"\",\n        \"extension_for\"\
-  : \"\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\": null,\n        \"installed_paths\": [\"\
-  /var/containers/Bundle/Application/\"]\n      }\n    ],\n    \"mdm\": {\n      \"encryption_key_available\": false,\n\
-  \      \"enrollment_status\": \"On (automatic)\",\n      \"name\": \"Fleet\",\n      \"server_url\": \"https://acme.com/mdm/apple/mdm\"\
-  ,\n      \"device_status\": \"unlocked\",\n      \"pending_action\": \"\",\n      \"macos_settings\": {\n    \
-  \    \"disk_encryption\": null,\n        \"action_required\": null\n      },\n      \"apple_settings\": {\n  \
-  \      \"disk_encryption\": null,\n        \"action_required\": null\n      },\n      \"macos_setup\": {\n   \
-  \     \"bootstrap_package_status\": \"installed\",\n        \"detail\": \"\"\n      },\n      \"setup_experience\"\
-  : {\n        \"bootstrap_package_status\": \"installed\",\n        \"detail\": \"\"\n      },\n      \"os_settings\"\
-  : {\n        \"disk_encryption\": {\n          \"status\": null,\n          \"detail\": \"\"\n        }\n    \
-  \  },\n      \"profiles\": [\n        {\n          \"profile_uuid\": \"954ec5ea-a334-4825-87b3-937e7e381f24\"\
-  ,\n          \"name\": \"iOS Restrictions Profile\",\n          \"status\": \"verifying\",\n          \"operation_type\"\
-  : \"install\",\n          \"scope\": \"device\",\n          \"managed_local_account\": \"\",\n          \"detail\"\
-  : \"\"\n        }\n      ]\n    }\n  }\n}\n```\n\n#### Example (Android)\n`GET /api/v1/fleet/hosts/identifier/392547dc-0000-0000-a87a-d701ff75bc65`\n\
+  \      \"failing_unhidden_policies_count\": 1, // Fleet Premium only\n      \"hidden_policies_count\": 0, // Fleet\
+  \ Premium only\n      \"critical_vulnerabilities_count\": 2, // Fleet Premium only\n      \"total_issues_count\"\
+  : 3\n    },\n    \"batteries\": [\n      {\n        \"cycle_count\": 187,\n        \"health\": \"Normal\"\n  \
+  \    }\n    ],\n    \"geolocation\": {\n      \"country_iso\": \"US\",\n      \"city_name\": \"New York\",\n \
+  \     \"geometry\": {\n        \"type\": \"point\",\n        \"coordinates\": [40.6799, -74.0028]\n      }\n \
+  \   },\n    \"pack_stats\": [\n      {\n        \"pack_id\": 1,\n        \"pack_name\": \"Global\",\n        \"\
+  type\": \"global\",\n        \"query_stats\": [\n          {\n            \"scheduled_query_name\": \"Get running\
+  \ processes (with user_name)\",\n            \"scheduled_query_id\": 49,\n            \"query_name\": \"Get running\
+  \ processes (with user_name)\",\n            \"pack_name\": \"Global\",\n            \"pack_id\": 1,\n       \
+  \     \"average_memory\": 260000,\n            \"denylisted\": false,\n            \"executions\": 1,\n      \
+  \      \"interval\": 86400,\n            \"last_executed\": \"2022-10-14T10:00:01Z\",\n            \"output_size\"\
+  : 198,\n            \"system_time\": 20,\n            \"user_time\": 80,\n            \"wall_time\": 0\n     \
+  \     }\n        ]\n      }\n    ],\n    \"labels\": [\n      {\n        \"created_at\": \"2021-09-14T05:11:02Z\"\
+  ,\n        \"updated_at\": \"2021-09-14T05:11:02Z\",\n        \"id\": 12,\n        \"name\": \"All iOS\",\n  \
+  \      \"description\": \"All iOS devices\",\n        \"query\": \"SELECT 1 FROM osquery_info WHERE build_platform\
+  \ = 'ios';\",\n        \"platform\": \"ios\",\n        \"label_type\": \"builtin\",\n        \"label_membership_type\"\
+  : \"dynamic\"\n      }\n    ],\n    \"packs\": [\n      {\n        \"created_at\": \"2021-09-17T05:28:54Z\",\n\
+  \        \"updated_at\": \"2021-09-17T05:28:54Z\",\n        \"id\": 1,\n        \"name\": \"Global\",\n      \
+  \  \"description\": \"Global pack\",\n        \"disabled\": false,\n        \"type\": \"global\",\n        \"\
+  labels\": null,\n        \"label_ids\": null,\n        \"hosts\": null,\n        \"host_ids\": null,\n       \
+  \ \"teams\": null,\n        \"fleet\": null,\n        \"team_ids\": null,\n        \"fleet_ids\": null\n     \
+  \ }\n    ],\n    \"policies\": [\n      {\n        \"id\": 142,\n        \"name\": \"Passcode required (iOS)\"\
+  ,\n        \"query\": \"SELECT 1 FROM managed_policies WHERE domain = 'com.apple.mobiledevice.passwordpolicy'\
+  \ AND name = 'forcePIN' AND value = 1 LIMIT 1;\",\n        \"description\": \"Checks to make sure that a passcode\
+  \ is required on iOS devices.\",\n        \"author_id\": 31,\n        \"author_name\": \"\",\n        \"author_email\"\
+  : \"\",\n        \"team_id\": null,\n        \"fleet_id\": null,\n        \"resolution\": \"To enable a passcode,\
+  \ on the failing device, go to Settings > Face ID & Passcode > Turn Passcode On.\",\n        \"platform\": \"\
+  ios\",\n        \"created_at\": \"2022-09-02T18:52:19Z\",\n        \"updated_at\": \"2022-09-02T18:52:19Z\",\n\
+  \        \"response\": \"fail\",\n        \"critical\": false\n      }\n    ],\n    \"software\": [\n      {\n\
+  \        \"id\": 16923,\n        \"name\": \"Gmail\",\n        \"version\": \"6.0.240414\",\n        \"source\"\
+  : \"ios_apps\",\n        \"ai_tool\": false,\n        \"browser\": \"\",\n        \"extension_for\": \"\",\n \
+  \       \"generated_cpe\": \"\",\n        \"vulnerabilities\": null,\n        \"installed_paths\": [\"/var/containers/Bundle/Application/\"\
+  ]\n      }\n    ],\n    \"mdm\": {\n      \"encryption_key_available\": false,\n      \"enrollment_status\": \"\
+  On (automatic)\",\n      \"name\": \"Fleet\",\n      \"server_url\": \"https://acme.com/mdm/apple/mdm\",\n   \
+  \   \"device_status\": \"unlocked\",\n      \"pending_action\": \"\",\n      \"macos_settings\": {\n        \"\
+  disk_encryption\": null,\n        \"action_required\": null\n      },\n      \"apple_settings\": {\n        \"\
+  disk_encryption\": null,\n        \"action_required\": null\n      },\n      \"macos_setup\": {\n        \"bootstrap_package_status\"\
+  : \"installed\",\n        \"detail\": \"\"\n      },\n      \"setup_experience\": {\n        \"bootstrap_package_status\"\
+  : \"installed\",\n        \"detail\": \"\"\n      },\n      \"os_settings\": {\n        \"disk_encryption\": {\n\
+  \          \"status\": null,\n          \"detail\": \"\"\n        }\n      },\n      \"profiles\": [\n       \
+  \ {\n          \"profile_uuid\": \"954ec5ea-a334-4825-87b3-937e7e381f24\",\n          \"name\": \"iOS Restrictions\
+  \ Profile\",\n          \"status\": \"verifying\",\n          \"operation_type\": \"install\",\n          \"scope\"\
+  : \"device\",\n          \"managed_local_account\": \"\",\n          \"detail\": \"\"\n        }\n      ]\n  \
+  \  }\n  }\n}\n```\n\n#### Example (Android)\n`GET /api/v1/fleet/hosts/identifier/392547dc-0000-0000-a87a-d701ff75bc65`\n\
   \n##### Default response\n\n`Status: 200`\n\n```json\n{\n  \"host\": {\n    \"created_at\": \"2021-08-19T02:02:22Z\"\
   ,\n    \"updated_at\": \"2021-08-19T21:14:58Z\",\n    \"id\": 1,\n    \"detail_updated_at\": \"2021-08-19T21:07:53Z\"\
   ,\n    \"last_restarted_at\": \"0001-01-01T00:00:00Z\",\n    \"software_updated_at\": \"2020-11-05T05:09:44Z\"\
@@ -210,33 +214,35 @@ docs: "Returns the information of the host specified using the `hostname`, `uuid
   ,\n    \"telephony_infos\": [\n      {\n        \"phone_number\": \"+15551234567\",\n        \"carrier_name\"\
   : \"Verizon\",\n        \"iccid\": \"89014103211118510720\",\n        \"activation_state\": \"ACTIVATED\",\n \
   \       \"config_mode\": \"ADMIN_CONFIGURED\"\n      }\n    ],\n    \"status\": \"online\",\n    \"display_text\"\
-  : \"Anna Chao's Google Pixel 9\",\n    \"issues\": {\n      \"failing_policies_count\": 0,\n      \"critical_vulnerabilities_count\"\
-  : 0, // Available in Fleet Premium\n      \"total_issues_count\": 0\n    },\n    \"batteries\": [],\n    \"end_users\"\
-  : [\n      {\n        \"idp_info_updated_at\": \"2025-03-20T02:02:17Z\",\n        \"idp_id\": \"f26f8649-1e25-42c5-be71-1b1e6de56d3d\"\
-  ,\n        \"idp_username\": \"anna@example.com\",\n        \"idp_full_name\": \"Anna Chao\",\n        \"idp_department\"\
-  : \"Product\",\n        \"idp_groups\": [\n          \"Product\",\n          \"Designers\"\n        ],\n     \
-  \   \"other_emails\": []\n      }\n    ],\n    \"labels\": [\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\"\
-  ,\n        \"updated_at\": \"2021-08-19T02:02:17Z\",\n        \"id\": 6,\n        \"name\": \"All Hosts\",\n \
-  \       \"description\": \"All hosts which have enrolled in Fleet\",\n        \"query\": \"SELECT 1;\",\n    \
-  \    \"platform\": \"\",\n        \"label_type\": \"builtin\",\n        \"label_membership_type\": \"dynamic\"\
-  \n      },\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\"\
-  ,\n        \"id\": 14,\n        \"name\": \"Android\",\n        \"description\": \"All Android hosts\",\n    \
-  \    \"query\": \"\",\n        \"platform\": \"android\",\n        \"label_type\": \"builtin\",\n        \"label_membership_type\"\
-  : \"manual\"\n      }\n    ],\n    \"packs\": [],\n    \"policies\": [],\n    \"software\": [\n      {\n     \
-  \   \"id\": 411,\n        \"name\": \"Gmail\",\n        \"version\": \"2026.05.04.123456789\",\n        \"source\"\
-  : \"android_apps\",\n        \"application_id\": \"com.google.android.gm\",\n        \"generated_cpe\": \"\",\n\
-  \        \"vulnerabilities\": null,\n        \"installed_paths\": []\n      },\n      {\n        \"id\": 412,\n\
-  \        \"name\": \"Slack\",\n        \"version\": \"26.05.10.0\",\n        \"source\": \"android_apps\",\n \
-  \       \"application_id\": \"com.Slack\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\": null,\n\
-  \        \"installed_paths\": []\n      }\n    ],\n    \"mdm\": {\n      \"encryption_key_available\": false,\n\
-  \      \"enrollment_status\": \"On (automatic)\",\n      \"is_personal_enrollment\": false,\n      \"name\": \"\
-  Fleet\",\n      \"connected_to_fleet\": true,\n      \"server_url\": \"https://acme.com\",\n      \"device_status\"\
-  : \"unlocked\",\n      \"pending_action\": \"\",\n      \"os_settings\": {\n        \"disk_encryption\": {\n \
-  \         \"status\": null,\n          \"detail\": \"\"\n        }\n      },\n      \"profiles\": [\n        {\n\
-  \          \"profile_uuid\": \"g954ec5ea-a334-4825-87b3-937e7e381f24\",\n          \"name\": \"Android Wi-Fi Profile\"\
-  ,\n          \"status\": \"verified\",\n          \"operation_type\": \"install\",\n          \"scope\": null,\n\
-  \          \"managed_local_account\": null,\n          \"detail\": \"\"\n        }\n      ]\n    }\n  }\n}\n```\n\
-  \n> Note: the response above assumes a [GeoIP database is configured](https://fleetdm.com/docs/deploying/configuration#geoip),\
+  : \"Anna Chao's Google Pixel 9\",\n    \"issues\": {\n      \"failing_policies_count\": 0,\n      \"failing_unhidden_policies_count\"\
+  : 0, // Available in Fleet Premium\n      \"hidden_policies_count\": 0, // Available in Fleet Premium\n      \"\
+  critical_vulnerabilities_count\": 0, // Available in Fleet Premium\n      \"total_issues_count\": 0\n    },\n\
+  \    \"batteries\": [],\n    \"end_users\": [\n      {\n        \"idp_info_updated_at\": \"2025-03-20T02:02:17Z\"\
+  ,\n        \"idp_id\": \"f26f8649-1e25-42c5-be71-1b1e6de56d3d\",\n        \"idp_username\": \"anna@example.com\"\
+  ,\n        \"idp_full_name\": \"Anna Chao\",\n        \"idp_department\": \"Product\",\n        \"idp_groups\"\
+  : [\n          \"Product\",\n          \"Designers\"\n        ],\n        \"other_emails\": []\n      }\n    ],\n\
+  \    \"labels\": [\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\",\n        \"updated_at\": \"2021-08-19T02:02:17Z\"\
+  ,\n        \"id\": 6,\n        \"name\": \"All Hosts\",\n        \"description\": \"All hosts which have enrolled\
+  \ in Fleet\",\n        \"query\": \"SELECT 1;\",\n        \"platform\": \"\",\n        \"label_type\": \"builtin\"\
+  ,\n        \"label_membership_type\": \"dynamic\"\n      },\n      {\n        \"created_at\": \"2021-08-19T02:02:17Z\"\
+  ,\n        \"updated_at\": \"2021-08-19T02:02:17Z\",\n        \"id\": 14,\n        \"name\": \"Android\",\n  \
+  \      \"description\": \"All Android hosts\",\n        \"query\": \"\",\n        \"platform\": \"android\",\n\
+  \        \"label_type\": \"builtin\",\n        \"label_membership_type\": \"manual\"\n      }\n    ],\n    \"\
+  packs\": [],\n    \"policies\": [],\n    \"software\": [\n      {\n        \"id\": 411,\n        \"name\": \"\
+  Gmail\",\n        \"version\": \"2026.05.04.123456789\",\n        \"source\": \"android_apps\",\n        \"ai_tool\"\
+  : false,\n        \"application_id\": \"com.google.android.gm\",\n        \"generated_cpe\": \"\",\n        \"\
+  vulnerabilities\": null,\n        \"installed_paths\": []\n      },\n      {\n        \"id\": 412,\n        \"\
+  name\": \"Slack\",\n        \"version\": \"26.05.10.0\",\n        \"source\": \"android_apps\",\n        \"ai_tool\"\
+  : false,\n        \"application_id\": \"com.Slack\",\n        \"generated_cpe\": \"\",\n        \"vulnerabilities\"\
+  : null,\n        \"installed_paths\": []\n      }\n    ],\n    \"mdm\": {\n      \"encryption_key_available\"\
+  : false,\n      \"enrollment_status\": \"On (automatic)\",\n      \"is_personal_enrollment\": false,\n      \"\
+  name\": \"Fleet\",\n      \"connected_to_fleet\": true,\n      \"server_url\": \"https://acme.com\",\n      \"\
+  device_status\": \"unlocked\",\n      \"pending_action\": \"\",\n      \"os_settings\": {\n        \"disk_encryption\"\
+  : {\n          \"status\": null,\n          \"detail\": \"\"\n        }\n      },\n      \"profiles\": [\n   \
+  \     {\n          \"profile_uuid\": \"g954ec5ea-a334-4825-87b3-937e7e381f24\",\n          \"name\": \"Android\
+  \ Wi-Fi Profile\",\n          \"status\": \"verified\",\n          \"operation_type\": \"install\",\n        \
+  \  \"scope\": null,\n          \"managed_local_account\": null,\n          \"detail\": \"\"\n        }\n     \
+  \ ]\n    }\n  }\n}\n```\n\n> Note: the response above assumes a [GeoIP database is configured](https://fleetdm.com/docs/deploying/configuration#geoip),\
   \ otherwise the `geolocation` object won't be included.\n\n> Note: `disk_encryption_enabled` is omitted when Fleet\
   \ doesn't know the host's disk encryption status, such as when the host hasn't reported it yet. It's also omitted\
   \ for Linux hosts that report their root volume as unencrypted, because Fleet can't confirm that a Linux host's\
@@ -245,18 +251,21 @@ docs: "Returns the information of the host specified using the `hostname`, `uuid
   \ fields are included when set and when empty. `extension_for` will show the browser or Visual Studio Code fork\
   \ associated with the extension, allowing for differentiation between e.g. an extension installed on Visual Studio\
   \ Code and one installed on Cursor. `browser` is deprecated, and only shows this information for browser plugins.\n\
-  \n`release` is included when set. For `rpm_packages`, it's the package release (for example, `1.212.el6`). For\
-  \ `go_binaries`, it's the version of the Go toolchain the binary was built with (for example, `go1.26.1`). Fleet\
-  \ uses it to detect Go standard library vulnerabilities, so the same binary version built with two toolchains\
-  \ is listed as two versions. `generated_cpe` is empty for Go binaries. Their vulnerabilities come from the [Go\
-  \ vulnerability database](https://vuln.go.dev) instead of NVD.\n\n> Note:\n> - Currently, the following are supported\
-  \ only for iOS/iPadOS: `accessibility_settings`, `app_analytics_enabled`, `awaiting_configuration`, `battery_level`,\
-  \ `bluetooth_mac`, `cellular_technology`, `data_roaming_enabled`, `device_properties_attestation`, `diagnostic_submission_enabled`,\
-  \ `eas_device_identifier`, `is_cloud_backup_enabled`, `is_device_locator_service_enabled`, `is_do_not_disturb_in_effect`,\
-  \ `is_mdm_lost_mode_enabled`, `is_network_tethered`, `itunes_store_account_hash`, `itunes_store_account_is_active`,\
-  \ `last_cloud_backup_date`, `mdm_options`, `model_number`, `modem_firmware_version`, `organization_info`, `personal_hotspot_enabled`,\
-  \ `push_token`, `service_subscriptions`, `supplemental_build_version`, `supplemental_os_version_extra`, `udid`,\
-  \ and `wifi_mac`.\n> - These iOS/iPadOS vitals are collected via Apple's [`DeviceInformation`](https://developer.apple.com/documentation/devicemanagement/deviceinformationcommand/command-data.dictionary/queries-data.dictionary)\
+  \n`issues.failing_policies_count` counts all failing policies, including those marked `hidden`. `issues.failing_unhidden_policies_count`\
+  \ (_Available in Fleet Premium_) counts only failing policies that aren't hidden. `issues.hidden_policies_count`\
+  \ (_Available in Fleet Premium_) counts all policies marked `hidden`, whether they're passing or failing.\n\n\
+  `release` is included when set. For `rpm_packages`, it's the package release (for example, `1.212.el6`). For `go_binaries`,\
+  \ it's the version of the Go toolchain the binary was built with (for example, `go1.26.1`). Fleet uses it to detect\
+  \ Go standard library vulnerabilities, so the same binary version built with two toolchains is listed as two versions.\
+  \ `generated_cpe` is empty for Go binaries. Their vulnerabilities come from the [Go vulnerability database](https://vuln.go.dev)\
+  \ instead of NVD.\n\n> Note:\n> - Currently, the following are supported only for iOS/iPadOS: `accessibility_settings`,\
+  \ `app_analytics_enabled`, `awaiting_configuration`, `battery_level`, `bluetooth_mac`, `cellular_technology`,\
+  \ `data_roaming_enabled`, `device_properties_attestation`, `diagnostic_submission_enabled`, `eas_device_identifier`,\
+  \ `is_cloud_backup_enabled`, `is_device_locator_service_enabled`, `is_do_not_disturb_in_effect`, `is_mdm_lost_mode_enabled`,\
+  \ `is_network_tethered`, `itunes_store_account_hash`, `itunes_store_account_is_active`, `last_cloud_backup_date`,\
+  \ `mdm_options`, `model_number`, `modem_firmware_version`, `organization_info`, `personal_hotspot_enabled`, `push_token`,\
+  \ `service_subscriptions`, `supplemental_build_version`, `supplemental_os_version_extra`, `udid`, and `wifi_mac`.\n\
+  > - These iOS/iPadOS vitals are collected via Apple's [`DeviceInformation`](https://developer.apple.com/documentation/devicemanagement/deviceinformationcommand/command-data.dictionary/queries-data.dictionary)\
   \ MDM command. A property the device doesn't report is omitted from the response rather than returned as `null`.\
   \ The exception is `mdm_options`, which is returned as an empty object when the device reports it with nothing\
   \ set.\n> - `cellular_technology` is one of `None`, `GSM`, `CDMA`, or `GSM and CDMA`. This will be `unknown` if\
@@ -281,7 +290,9 @@ docs: "Returns the information of the host specified using the `hostname`, `uuid
   \ as `ACTIVE`, `AT_RISK`, `UP_TO_DATE`, `UNKNOWN_OS`, `ACTIVATED`, and `ADMIN_CONFIGURED`. AMAPI's \"no data\"\
   \ sentinels (`*_UNSPECIFIED` and `UPDATE_STATUS_UNKNOWN`) are omitted from the response instead of being returned.\n\
   > - `security_update_version` is the host's Android security patch level. It's also folded into `os_version`,\
-  \ for example `Android 16 (2026-05-01)`.\n\nReference: https://fleetdm.com/docs/rest-api/rest-api#get-host-by-identifier"
+  \ for example `Android 16 (2026-05-01)`.\n\n\n> Note: `google_device_id` is only returned for iOS, iPadOS, and\
+  \ Android hosts. It's `\"\"` when the host isn't bound to a device ID in Google. To bind it, use [Update host's\
+  \ Google device ID](#update-hosts-google-device-id).\n\nReference: https://fleetdm.com/docs/rest-api/rest-api#get-host-by-identifier"
 examples:
 - name: 200 Default response
   request:
@@ -362,6 +373,8 @@ examples:
             "gigs_total_disk_space": 192,
             "issues": {
               "failing_policies_count": 1,
+              "failing_unhidden_policies_count": 1,
+              "hidden_policies_count": 0,
               "critical_vulnerabilities_count": 2,
               "total_issues_count": 3
             },
@@ -464,6 +477,7 @@ examples:
                 "name": "Automat",
                 "version": "0.8.0",
                 "source": "python_packages",
+                "ai_tool": false,
                 "browser": "",
                 "extension_for": "",
                 "generated_cpe": "",
@@ -512,7 +526,8 @@ examples:
                   "operation_type": "install",
                   "scope": "device",
                   "managed_local_account": "",
-                  "detail": ""
+                  "detail": "",
+                  "self_service": true
                 }
               ]
             }
@@ -564,6 +579,7 @@ examples:
             "hostname": "Johns-iPhone",
             "uuid": "392547dc-0000-0000-a87a-d701ff75bc65",
             "platform": "ios",
+            "google_device_id": "c3d1a9e2-7b4f-4e8a-9f1d-2a6b8c0e4f12",
             "osquery_version": "5.5.1",
             "os_version": "iOS 17.4.1",
             "build": "21E236",
@@ -667,6 +683,8 @@ examples:
             "wifi_mac": "a4:83:e7:12:34:58",
             "issues": {
               "failing_policies_count": 1,
+              "failing_unhidden_policies_count": 1,
+              "hidden_policies_count": 0,
               "critical_vulnerabilities_count": 2,
               "total_issues_count": 3
             },
@@ -769,6 +787,7 @@ examples:
                 "name": "Gmail",
                 "version": "6.0.240414",
                 "source": "ios_apps",
+                "ai_tool": false,
                 "browser": "",
                 "extension_for": "",
                 "generated_cpe": "",
@@ -939,6 +958,8 @@ examples:
             "display_text": "Anna Chao's Google Pixel 9",
             "issues": {
               "failing_policies_count": 0,
+              "failing_unhidden_policies_count": 0,
+              "hidden_policies_count": 0,
               "critical_vulnerabilities_count": 0,
               "total_issues_count": 0
             },
@@ -989,6 +1010,7 @@ examples:
                 "name": "Gmail",
                 "version": "2026.05.04.123456789",
                 "source": "android_apps",
+                "ai_tool": false,
                 "application_id": "com.google.android.gm",
                 "generated_cpe": "",
                 "vulnerabilities": null,
@@ -999,6 +1021,7 @@ examples:
                 "name": "Slack",
                 "version": "26.05.10.0",
                 "source": "android_apps",
+                "ai_tool": false,
                 "application_id": "com.Slack",
                 "generated_cpe": "",
                 "vulnerabilities": null,

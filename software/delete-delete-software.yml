@@ -1,7 +1,7 @@
 info:
   name: Delete software
   type: http
-  seq: 24
+  seq: 25
 http:
   method: DELETE
   url: '{{baseUrl}}/api/v1/fleet/software/titles/:software_title_id/available_for_install'

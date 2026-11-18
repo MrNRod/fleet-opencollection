@@ -1,7 +1,7 @@
 info:
   name: Create Apple asset declaration
   type: http
-  seq: 8
+  seq: 10
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/assets'

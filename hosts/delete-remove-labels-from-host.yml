@@ -1,7 +1,7 @@
 info:
   name: Remove labels from host
   type: http
-  seq: 37
+  seq: 40
 http:
   method: DELETE
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/labels'

@@ -17,6 +17,12 @@ http:
     type: query
     disabled: true
     description: If `true`, the response will not include a list of installed software for the host.
+  - name: include_hidden_policies
+    value: ''
+    type: query
+    disabled: true
+    description: _Available in Fleet Premium_. If `true`, the response's `policies` list will include policies marked
+      `hidden`. Hidden policies are omitted by default.
 docs: |-
   Returns a subset of information about the host specified by `token`. To get all information about a host, use the ["Get host"](#get-host) endpoint.
 
@@ -42,6 +48,7 @@ docs: |-
   | ----- | ------ | ---- | ---------------------------------- |
   | token | string | path | The host's [Fleet Desktop token](https://fleetdm.com/guides/fleet-desktop#secure-fleet-desktop). For macOS, Windows, and Linux, this is a random UUID that rotates hourly. For iOS and iPadOS, this is the host's hardware UUID. |
   | exclude_software | boolean | query | If `true`, the response will not include a list of installed software for the host.     |
+  | include_hidden_policies | boolean | query | _Available in Fleet Premium_. If `true`, the response's `policies` list will include policies marked `hidden`. Hidden policies are omitted by default.     |
 
   ##### Example
 
@@ -115,6 +122,12 @@ docs: |-
       "org_logo_url": "https://example.com/logo.png",
       "org_logo_url_light_background": "https://example.com/logo-light.png",
       "conditional_access_bypassed": false,
+      "issues": {
+        "failing_policies_count": 2,
+        "failing_unhidden_policies_count": 1, // Available in Fleet Premium
+        "hidden_policies_count": 1, // Available in Fleet Premium
+        "total_issues_count": 2
+      },
       "license": {
         "tier": "free",
         "expiration": "2031-01-01T00:00:00Z"
@@ -188,6 +201,7 @@ docs: |-
           "name": "SomeApp.app",
           "version": "1.0",
           "source": "apps",
+          "ai_tool": false,
           "browser": "",
           "extension_for": "",
           "bundle_identifier": "com.some.app",
@@ -243,7 +257,20 @@ docs: |-
             "operation_type": "install",
             "scope": "device",
             "managed_local_account": "",
-            "detail": ""
+            "detail": "",
+            "self_service": true,
+            "hidden": false
+          },
+          {
+            "profile_uuid": "954ec5ea-a334-4825-87b3-937e7e385678",
+            "name": "profile3",
+            "status": null,
+            "operation_type": "",
+            "scope": "device",
+            "managed_local_account": "",
+            "detail": "",
+            "self_service": true,
+            "hidden": false
           }
         ]
       }
@@ -251,7 +278,11 @@ docs: |-
   }
   ```
 
+  A profile with `"status": null` is a self-service profile the host can install but hasn't yet.
+
   `browser` and `extension_for` fields are included when set and when empty. `extension_for` will show the browser or Visual Studio Code fork associated with the extension, allowing for differentiation between e.g. an extension installed on Visual Studio Code and one installed on Cursor. `browser` is deprecated, and only shows this information for browser plugins.
+
+  `issues.failing_policies_count` counts all failing policies, including those marked `hidden`. `issues.failing_unhidden_policies_count` (_Available in Fleet Premium_) counts only failing policies that aren't hidden. `issues.hidden_policies_count` (_Available in Fleet Premium_) counts all policies marked `hidden`, whether they're passing or failing, and doesn't depend on `include_hidden_policies`.
 
   `release` is included when set. For `rpm_packages`, it's the package release (for example, `1.212.el6`). For `go_binaries`, it's the version of the Go toolchain the binary was built with (for example, `go1.26.1`). Fleet uses it to detect Go standard library vulnerabilities, so the same binary version built with two toolchains is listed as two versions. `generated_cpe` is empty for Go binaries. Their vulnerabilities come from the [Go vulnerability database](https://vuln.go.dev) instead of NVD.
 
@@ -277,6 +308,12 @@ examples:
       type: query
       disabled: true
       description: If `true`, the response will not include a list of installed software for the host.
+    - name: include_hidden_policies
+      value: ''
+      type: query
+      disabled: true
+      description: _Available in Fleet Premium_. If `true`, the response's `policies` list will include policies
+        marked `hidden`. Hidden policies are omitted by default.
   response:
     status: 200
     statusText: OK
@@ -346,6 +383,12 @@ examples:
             "org_logo_url": "https://example.com/logo.png",
             "org_logo_url_light_background": "https://example.com/logo-light.png",
             "conditional_access_bypassed": false,
+            "issues": {
+              "failing_policies_count": 2,
+              "failing_unhidden_policies_count": 1,
+              "hidden_policies_count": 1,
+              "total_issues_count": 2
+            },
             "license": {
               "tier": "free",
               "expiration": "2031-01-01T00:00:00Z"
@@ -419,6 +462,7 @@ examples:
                 "name": "SomeApp.app",
                 "version": "1.0",
                 "source": "apps",
+                "ai_tool": false,
                 "browser": "",
                 "extension_for": "",
                 "bundle_identifier": "com.some.app",
@@ -474,7 +518,20 @@ examples:
                   "operation_type": "install",
                   "scope": "device",
                   "managed_local_account": "",
-                  "detail": ""
+                  "detail": "",
+                  "self_service": true,
+                  "hidden": false
+                },
+                {
+                  "profile_uuid": "954ec5ea-a334-4825-87b3-937e7e385678",
+                  "name": "profile3",
+                  "status": null,
+                  "operation_type": "",
+                  "scope": "device",
+                  "managed_local_account": "",
+                  "detail": "",
+                  "self_service": true,
+                  "hidden": false
                 }
               ]
             }

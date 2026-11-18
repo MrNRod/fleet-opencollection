@@ -1,7 +1,7 @@
 info:
   name: Update software icon
   type: http
-  seq: 9
+  seq: 10
 http:
   method: PUT
   url: '{{baseUrl}}/api/v1/fleet/software/titles/:id/icon'

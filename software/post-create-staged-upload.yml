@@ -1,0 +1,99 @@
+info:
+  name: Create staged upload
+  type: http
+  seq: 7
+http:
+  method: POST
+  url: '{{baseUrl}}/api/v1/fleet/staged_upload'
+  auth: inherit
+  body:
+    type: json
+    data: |-
+      {
+        "target": "software_package",
+        "fleet_id": 1,
+        "size": 524288000
+      }
+  headers:
+  - name: Content-Type
+    value: application/json
+docs: |-
+  _Available in Fleet Premium._
+
+  Get a short-lived URL for uploading a package directly to Google Cloud Storage (GCS), so the package bytes don't pass through the Fleet server. Use this for packages larger than your load balancer or ingress allows, like Cloud Run's 32 MiB limit.
+
+  Available when [`s3_software_installers_gcs_signed_url`](https://fleetdm.com/docs/configuration/fleet-server-configuration#s-3-software-installers-gcs-signed-url) is on. [Get configuration](https://fleetdm.com/docs/rest-api/rest-api#get-configuration) returns `staged_upload_available: true` when it is.
+
+  `POST /api/v1/fleet/staged_upload`
+
+
+  #### Parameters
+
+  | Name     | Type    | In   | Description |
+  | -------- | ------- | ---- | ----------- |
+  | target   | string  | body | **Required.** What the package is for: `software_package` or `bootstrap_package`. |
+  | fleet_id | integer | body | The fleet ID. If not specified, the upload is for "Unassigned". |
+  | size     | integer | body | **Required.** The package size in bytes. It can't be larger than [`server_max_installer_size`](https://fleetdm.com/docs/configuration/fleet-server-configuration#server-max-installer-size). |
+
+  Upload the package to `url` with a `PUT` request whose `Content-Length` matches `size`, without a Fleet `Authorization` header. Then pass `upload_id` and the package's file name as `filename` to [Add package](https://fleetdm.com/docs/rest-api/rest-api#add-package), [Update package](https://fleetdm.com/docs/rest-api/rest-api#update-package), or [Create bootstrap package](https://fleetdm.com/docs/rest-api/rest-api#create-bootstrap-package) in place of the file. The URL expires at `expires_at`. Staged uploads that aren't registered are deleted after 24 hours.
+
+
+  #### Example
+
+  `POST /api/v1/fleet/staged_upload`
+
+
+  ##### Request body
+
+  ```json
+  {
+    "target": "software_package",
+    "fleet_id": 1,
+    "size": 524288000
+  }
+  ```
+
+
+  ##### Default response
+
+  `Status: 200`
+
+  ```json
+  {
+    "upload_id": "9c8c3146-a2ef-450b-9cc6-70b005d8554e",
+    "url": "https://storage.googleapis.com/fleet-installers/uploads/9c8c3146-a2ef-450b-9cc6-70b005d8554e?X-Amz-Algorithm=AWS4-HMAC-SHA256&...",
+    "expires_at": "2026-10-02T22:00:00Z"
+  }
+  ```
+
+  Reference: https://fleetdm.com/docs/rest-api/rest-api#create-staged-upload
+examples:
+- name: 200 Default response
+  request:
+    method: POST
+    url: '{{baseUrl}}/api/v1/fleet/staged_upload'
+    body:
+      type: json
+      data: |-
+        {
+          "target": "software_package",
+          "fleet_id": 1,
+          "size": 524288000
+        }
+    headers:
+    - name: Content-Type
+      value: application/json
+  response:
+    status: 200
+    statusText: OK
+    body:
+      type: json
+      data: |-
+        {
+          "upload_id": "9c8c3146-a2ef-450b-9cc6-70b005d8554e",
+          "url": "https://storage.googleapis.com/fleet-installers/uploads/9c8c3146-a2ef-450b-9cc6-70b005d8554e?X-Amz-Algorithm=AWS4-HMAC-SHA256&...",
+          "expires_at": "2026-10-02T22:00:00Z"
+        }
+    headers:
+    - name: Content-Type
+      value: application/json

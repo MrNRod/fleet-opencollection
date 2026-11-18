@@ -130,7 +130,8 @@ docs: |-
           "configuration_profiles": [
             {
              "path": "path/to/profile1.mobileconfig",
-             "labels": ["Label 1", "Label 2"]
+             "labels": ["Label 1", "Label 2"],
+             "self_service": true
             },
             {
              "path": "path/to/declaration.json",
@@ -314,7 +315,8 @@ examples:
                     "labels": [
                       "Label 1",
                       "Label 2"
-                    ]
+                    ],
+                    "self_service": true
                   },
                   {
                     "path": "path/to/declaration.json",

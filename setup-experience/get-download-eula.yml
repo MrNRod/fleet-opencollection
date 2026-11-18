@@ -16,6 +16,8 @@ docs: |-
 
   Download an EULA file
 
+  > The response for `Content-Type: application/pdf` for `darwin` and `Content-Type: text/markdown; charset=utf-8` for Windows.
+
   `GET /api/v1/fleet/setup_experience/eula/:token`
 
   #### Parameters

@@ -1,7 +1,7 @@
 info:
   name: Unlock host
   type: http
-  seq: 30
+  seq: 33
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/unlock'

@@ -1,7 +1,7 @@
 info:
   name: Get host's mobile device management (MDM) information
   type: http
-  seq: 17
+  seq: 19
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/mdm'

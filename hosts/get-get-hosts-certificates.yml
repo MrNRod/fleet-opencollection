@@ -1,7 +1,7 @@
 info:
   name: Get host's certificates
   type: http
-  seq: 27
+  seq: 30
 http:
   method: GET
   url: '{{baseUrl}}/api/v1/fleet/hosts/:id/certificates'

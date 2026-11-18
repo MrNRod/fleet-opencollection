@@ -1,7 +1,7 @@
 info:
   name: Create Android web app
   type: http
-  seq: 18
+  seq: 19
 http:
   method: POST
   url: '{{baseUrl}}/api/v1/fleet/software/web_apps'
